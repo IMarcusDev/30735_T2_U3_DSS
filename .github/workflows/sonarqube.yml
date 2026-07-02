@@ -71,16 +71,21 @@ jobs:
 
       - name: Trivy - escaneo de vulnerabilidades en dependencias
         if: always()
-        uses: aquasecurity/trivy-action@v0.33.1
-        with:
-          scan-type: fs
-          scan-ref: .
-          scanners: vuln
-          severity: HIGH,CRITICAL
-          format: json
-          output: trivy-deps.json
-          exit-code: '0'
-          skip-dirs: '**/node_modules,**/dist,**/coverage'
+        continue-on-error: true
+        run: |
+          docker run --rm \
+            -v "${PWD}:/repo" \
+            -w /repo \
+            aquasec/trivy:0.65.0 fs \
+              --scanners vuln \
+              --severity HIGH,CRITICAL \
+              --format json \
+              --output trivy-deps.json \
+              --exit-code 0 \
+              --skip-dirs '**/node_modules' \
+              --skip-dirs '**/dist' \
+              --skip-dirs '**/coverage' \
+              .
 
       - name: Publicar reporte de Trivy en el resumen
         if: always()
