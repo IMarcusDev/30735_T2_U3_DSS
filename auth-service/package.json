@@ -4,7 +4,8 @@
   "description": "",
   "main": "src/app.js",
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1",
+    "test": "jest",
+    "test:cov": "jest --coverage",
     "dev": "nodemon src/app.js"
   },
   "keywords": [],
@@ -20,6 +21,18 @@
     "node-fetch": "^2.7.0"
   },
   "devDependencies": {
+    "jest": "^29.7.0",
     "nodemon": "^3.1.10"
+  },
+  "jest": {
+    "testEnvironment": "node",
+    "collectCoverageFrom": [
+      "src/**/*.js",
+      "!src/app.js"
+    ],
+    "coverageReporters": [
+      "text",
+      "lcov"
+    ]
   }
 }

@@ -49,6 +49,18 @@ jobs:
         with:
           node-version: 22
 
+      - name: Test auth-service (coverage)
+        working-directory: auth-service
+        run: |
+          npm ci
+          npm run test:cov
+
+      - name: Test booking-service (coverage)
+        working-directory: booking-service
+        run: |
+          npm ci
+          npm run test:cov
+
       - name: Install frontend deps (mejora el análisis de tipos TS)
         working-directory: frontend
         run: npm ci
