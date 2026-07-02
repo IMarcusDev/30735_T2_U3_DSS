@@ -1,0 +1,156 @@
+name: SonarQube Quality Gate
+
+on:
+  pull_request:
+    branches: [main]
+  push:
+    branches: [main]
+
+jobs:
+  sonarqube:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          fetch-depth: 0
+
+      - name: Restore last successful SonarQube snapshot
+        uses: actions/cache/restore@v4
+        with:
+          path: sonarqube-data
+          key: sonarqube-snapshot-none
+          restore-keys: |
+            sonarqube-snapshot-
+
+      - name: Tune host for SonarQube's embedded Elasticsearch
+        run: |
+          sudo sysctl -w vm.max_map_count=262144
+          sudo sysctl -w fs.file-max=131072
+
+      - name: Start SonarQube
+        run: |
+          mkdir -p sonarqube-data sonarqube-extensions sonarqube-logs
+          chmod -R 777 sonarqube-data sonarqube-extensions sonarqube-logs
+          docker run -d --name sonarqube \
+            -p 9000:9000 \
+            -v "${PWD}/sonarqube-data:/opt/sonarqube/data" \
+            -v "${PWD}/sonarqube-extensions:/opt/sonarqube/extensions" \
+            -v "${PWD}/sonarqube-logs:/opt/sonarqube/logs" \
+            sonarqube:community
+
+      - name: Wait for SonarQube to be ready
+        run: .github/sonarqube/wait-for-sonarqube.sh
+
+      - name: Configure admin token and Quality Gate
+        id: sonar-setup
+        run: .github/sonarqube/setup-quality-gate.sh
+
+      - uses: actions/setup-node@v4
+        with:
+          node-version: 22
+
+      - name: Install frontend deps (mejora el análisis de tipos TS)
+        working-directory: frontend
+        run: npm ci
+
+      - name: SonarQube Scan
+        id: sonar-scan
+        uses: sonarsource/sonarqube-scan-action@v4
+        continue-on-error: true
+        env:
+          SONAR_HOST_URL: http://localhost:9000
+          SONAR_TOKEN: ${{ steps.sonar-setup.outputs.token }}
+
+      - name: Publish SonarQube summary
+        if: always()
+        continue-on-error: true
+        run: .github/sonarqube/publish-summary.sh
+        env:
+          SONAR_HOST_URL: http://localhost:9000
+          SONAR_TOKEN: ${{ steps.sonar-setup.outputs.token }}
+
+      - name: Trivy - escaneo de vulnerabilidades en dependencias
+        if: always()
+        uses: aquasecurity/trivy-action@v0.30.0
+        with:
+          scan-type: fs
+          scan-ref: .
+          scanners: vuln
+          severity: HIGH,CRITICAL
+          format: json
+          output: trivy-deps.json
+          exit-code: '0'
+          skip-dirs: '**/node_modules,**/dist,**/coverage'
+
+      - name: Publicar reporte de Trivy en el resumen
+        if: always()
+        run: |
+          {
+            echo "## Trivy — vulnerabilidades en dependencias (HIGH/CRITICAL)"
+            echo
+            count="$(jq '[.Results[]?.Vulnerabilities[]?] | length' trivy-deps.json 2>/dev/null || echo 0)"
+            if [ "${count:-0}" -gt 0 ]; then
+              echo "| Severidad | Paquete | Instalada | Corrige en | Vulnerabilidad |"
+              echo "|---|---|---|---|---|"
+              jq -r '.Results[]? | .Vulnerabilities[]?
+                | (if (.FixedVersion // "") == "" then "-" else .FixedVersion end) as $fix
+                | "| \(.Severity) | \(.PkgName) | \(.InstalledVersion) | \($fix) | \(.VulnerabilityID) |"' \
+                trivy-deps.json
+            else
+              echo "_Sin vulnerabilidades HIGH/CRITICAL detectadas en las dependencias._"
+            fi
+          } >> "$GITHUB_STEP_SUMMARY"
+
+      - name: Notificar resultados a Telegram (obligatorio)
+        if: always()
+        run: .github/notify/telegram.sh
+        env:
+          SONAR_HOST_URL: http://localhost:9000
+          SONAR_TOKEN: ${{ steps.sonar-setup.outputs.token }}
+          TELEGRAM_BOT_TOKEN: ${{ secrets.TELEGRAM_BOT_TOKEN }}
+          TELEGRAM_CHAT_ID: ${{ secrets.TELEGRAM_CHAT_ID }}
+          RUN_URL: ${{ github.server_url }}/${{ github.repository }}/actions/runs/${{ github.run_id }}
+          EVENT_NAME: ${{ github.event_name }}
+          BRANCH: ${{ github.head_ref || github.ref_name }}
+          PR_NUMBER: ${{ github.event.pull_request.number }}
+          COMMIT_SHA: ${{ github.sha }}
+
+      - name: Dump SonarQube logs on failure
+        if: failure()
+        run: docker logs sonarqube || true
+
+      - name: Stop SonarQube
+        if: always()
+        run: docker stop sonarqube || true
+
+      - name: Fix snapshot ownership for cache save
+        if: success() && github.ref == 'refs/heads/main' && github.event_name == 'push'
+        run: sudo chown -R "$(id -u):$(id -g)" sonarqube-data
+
+      - name: Save SonarQube snapshot as new baseline
+        if: success() && github.ref == 'refs/heads/main' && github.event_name == 'push'
+        uses: actions/cache/save@v4
+        with:
+          path: sonarqube-data
+          key: sonarqube-snapshot-${{ github.run_id }}
+
+      - name: Fail job if Quality Gate or Trivy failed
+        if: always()
+        run: |
+          fail=0
+
+          if [ "${{ steps.sonar-scan.outcome }}" = "failure" ]; then
+            echo "::error::Quality Gate failed. Revisa el resumen del job para más detalles."
+            fail=1
+          fi
+
+          crit=0
+          if [ -f trivy-deps.json ]; then
+            crit="$(jq '[.Results[]?.Vulnerabilities[]? | select(.Severity=="CRITICAL")] | length' trivy-deps.json 2>/dev/null || echo 0)"
+          fi
+          if [ "${crit:-0}" -gt 0 ]; then
+            echo "::error::Trivy encontró ${crit} vulnerabilidad(es) CRITICAL en dependencias. Revisa el resumen del job."
+            fail=1
+          fi
+
+          exit "$fail"
