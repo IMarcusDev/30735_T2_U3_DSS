@@ -97,7 +97,8 @@ ${trivy_emoji} <b>Trivy — dependencias (HIGH/CRITICAL)</b>
 • CRITICAL: ${crit}
 • HIGH: ${high}
 
-🔗 <a href="${RUN_URL:-}">Ver ejecución en GitHub Actions</a>${notes_block}
+🔗 <a href="${RUN_URL:-}">Ver ejecución en GitHub Actions</a>
+📄 <a href="${RUN_URL:-}#summary">Ver resumen del job (Sonar + Trivy)</a>${notes_block}
 EOF
 )"
 
