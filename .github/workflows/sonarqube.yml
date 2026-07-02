@@ -71,7 +71,7 @@ jobs:
 
       - name: Trivy - escaneo de vulnerabilidades en dependencias
         if: always()
-        uses: aquasecurity/trivy-action@v0.30.0
+        uses: aquasecurity/trivy-action@v0.33.1
         with:
           scan-type: fs
           scan-ref: .
