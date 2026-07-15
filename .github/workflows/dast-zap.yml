@@ -1,0 +1,144 @@
+name: DAST - OWASP ZAP Baseline
+
+on:
+    pull_request:
+        branches: [main]
+    push:
+        branches: [main]
+    workflow_dispatch:
+
+concurrency:
+    group: dast-${{ github.ref }}
+    cancel-in-progress: true
+
+permissions:
+    contents: read
+
+env:
+    ZAP_TARGET: http://localhost:3000
+    MAX_HIGH: 0
+
+jobs:
+    dast:
+        runs-on: ubuntu-latest
+        steps:
+            - uses: actions/checkout@v4
+
+            - name: Generar frontend/.env.production.local
+              run: |
+                  cat > frontend/.env.production.local <<'EOF'
+                  NEXT_PUBLIC_API_URL=/api/auth
+                  NEXT_PUBLIC_BOOKING_URL=/api/bookings
+                  NEXT_PUBLIC_USER_URL=/api/users
+                  EOF
+
+            - name: Levantar el stack con Docker Compose
+              run: docker compose up -d --build
+
+            - name: Esperar a que el stack responda
+              run: |
+                  # Un 404 también significa "el servicio está arriba": las rutas van
+                  # montadas en prefijos distintos, así que basta con que conteste HTTP.
+                  wait_http() {
+                    local nombre="$1" url="$2" code
+                    for i in $(seq 1 60); do
+                      code="$(curl -s -o /dev/null -w '%{http_code}' --max-time 3 "$url" || true)"
+                      if [ -n "$code" ] && [ "$code" != "000" ]; then
+                        echo "${nombre} responde (HTTP ${code}) tras ~$((i * 2))s"
+                        return 0
+                      fi
+                      sleep 2
+                    done
+                    echo "::error::${nombre} no respondió en ${url} tras 120s"
+                    return 1
+                  }
+
+                  wait_http "frontend"        "http://localhost:3000"
+                  wait_http "auth-service"    "http://localhost:4000/api/login"
+                  wait_http "booking-service" "http://localhost:5000/bookings"
+                  wait_http "user-service"    "http://localhost:5003/users"
+
+            - name: OWASP ZAP Baseline Scan
+              id: zap
+              uses: zaproxy/action-baseline@v0.15.0
+              with:
+                  token: ${{ secrets.GITHUB_TOKEN }}
+                  target: ${{ env.ZAP_TARGET }}
+                  rules_file_name: .zap/rules.tsv
+                  cmd_options: "-a -j -m 5 -T 10"
+                  fail_action: false
+                  allow_issue_writing: false
+                  artifact_name: zap-dast-report
+
+            - name: Publicar reporte de ZAP en el resumen
+              if: always()
+              run: |
+                  {
+                    echo "## OWASP ZAP — Baseline DAST"
+                    echo
+                    echo "Objetivo: \`${ZAP_TARGET}\`"
+                    echo
+                    if [ ! -f report_json.json ]; then
+                      echo "_No se generó \`report_json.json\`: el escaneo no llegó a completarse._"
+                      exit 0
+                    fi
+                    total="$(jq '[.site[]?.alerts[]?] | length' report_json.json 2>/dev/null || echo 0)"
+                    if [ "${total:-0}" -gt 0 ]; then
+                      echo "| Riesgo | Alerta | Instancias | Confianza |"
+                      echo "|---|---|---|---|"
+                      jq -r '
+                        def etiqueta: {"3":"🔴 Alto","2":"🟠 Medio","1":"🟡 Bajo","0":"🔵 Info"}[.riskcode] // .riskcode;
+                        def certeza: {"0":"Falso positivo","1":"Baja","2":"Media","3":"Alta","4":"Confirmada"}[.confidence] // .confidence;
+                        [.site[]?.alerts[]?]
+                        | sort_by(.riskcode) | reverse
+                        | .[]
+                        | "| \(etiqueta) | \(.name) | \(.instances | length) | \(certeza) |"
+                      ' report_json.json
+                    else
+                      echo "_Sin alertas reportadas por ZAP._"
+                    fi
+                  } >> "$GITHUB_STEP_SUMMARY"
+
+            - name: Notificar resultados a Telegram (obligatorio)
+              if: always()
+              run: .github/notify/telegram-dast.sh
+              env:
+                  ZAP_OUTCOME: ${{ steps.zap.outcome }}
+                  TELEGRAM_BOT_TOKEN: ${{ secrets.TELEGRAM_BOT_TOKEN }}
+                  TELEGRAM_CHAT_ID: ${{ secrets.TELEGRAM_CHAT_ID }}
+                  RUN_URL: ${{ github.server_url }}/${{ github.repository }}/actions/runs/${{ github.run_id }}
+                  EVENT_NAME: ${{ github.event_name }}
+                  BRANCH: ${{ github.head_ref || github.ref_name }}
+                  PR_NUMBER: ${{ github.event.pull_request.number }}
+                  COMMIT_SHA: ${{ github.sha }}
+
+            - name: Volcar logs del stack si algo falló
+              if: failure()
+              run: docker compose logs --tail=200 || true
+
+            - name: Apagar el stack
+              if: always()
+              run: docker compose down -v || true
+
+            - name: Fail job si el DAST no pasó
+              if: always()
+              run: |
+                  fail=0
+
+                  if [ "${{ steps.zap.outcome }}" = "failure" ]; then
+                    echo "::error::La acción de ZAP falló (objetivo inalcanzable o error del escáner)."
+                    fail=1
+                  fi
+
+                  if [ ! -f report_json.json ]; then
+                    echo "::error::No se generó report_json.json: el escaneo DAST no se completó."
+                    exit 1
+                  fi
+
+                  high="$(jq '[.site[]?.alerts[]? | select(.riskcode=="3")] | length' report_json.json 2>/dev/null || echo 0)"
+                  if [ "${high:-0}" -gt "${MAX_HIGH}" ]; then
+                    echo "::error::ZAP encontró ${high} alerta(s) de riesgo ALTO (máximo tolerado: ${MAX_HIGH}). Revisa el resumen del job."
+                    fail=1
+                  fi
+
+                  exit "$fail"

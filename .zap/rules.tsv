@@ -1,0 +1,22 @@
+# Reglas del ZAP Baseline Scan — formato: ID<TAB>ACCIÓN<TAB>comentario
+# Acciones: IGNORE (no aparece), WARN (aparece como aviso), FAIL (marca el scan).
+#
+# El job no reprueba por WARN: el gate está en .github/workflows/dast-zap.yml y
+# solo mira las alertas de riesgo ALTO. Estas reglas sirven para quitar ruido y
+# dejar visibles los hallazgos que sí valen la pena revisar.
+#
+# IGNORE — ruido conocido o falsos positivos sobre los bundles de Next.js
+10109	IGNORE	Modern Web Application: informativa, siempre salta en una SPA de Next.
+10096	IGNORE	Timestamp Disclosure: falsos positivos, matchea números sueltos del bundle.
+10027	IGNORE	Information Disclosure - Suspicious Comments: ruido de los bundles minificados.
+10049	IGNORE	Storable and Cacheable Content: esperado en los assets estáticos de Next.
+#
+# WARN — hallazgos reales del stack; documentados para revisarlos en el informe.
+10038	WARN	Content Security Policy (CSP) Header Not Set: el frontend no manda CSP.
+10063	WARN	Permissions Policy Header Not Set.
+10020	WARN	Missing Anti-clickjacking Header (X-Frame-Options).
+10021	WARN	X-Content-Type-Options Header Missing.
+10035	WARN	Strict-Transport-Security: solo aplica al desplegar sobre HTTPS.
+10037	WARN	Server Leaks Information via X-Powered-By: Next expone su cabecera.
+10017	WARN	Cross-Domain JavaScript Source File Inclusion.
+90033	WARN	Loosely Scoped Cookie.
